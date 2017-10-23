@@ -33,11 +33,11 @@ The end-to-end flow of the application would be:
 The What's For Dinner microservices-based reference application has been implemented using two of the most popular technologies used for microservices development these days: [**Spring Boot**](https://projects.spring.io/spring-boot/) and the [**Java MicroProfile**](https://microprofile.io/). In this two implementations, we have used the [**Netfix OSS**](https://netflix.github.io/) stack to create a microservices eco-system. To know more about these two implementations, how they look inside out and more click on the images below:
 
 <p align="center">
-  <a href="https://www.w3schools.com">
+  <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/microprofile">
     <img src="static/imgs/microprofile_small.png">
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.w3schools.com">
+  <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/spring">
     <img src="static/imgs/spring_small.png">
   </a>
 </p>
