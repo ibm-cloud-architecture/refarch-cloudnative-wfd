@@ -3,9 +3,10 @@
 This repository contains the **Java MicroProfile** implementation of the microservice-based reference application called **What's For Dinner** which can be found in https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd
 
 <p align="center">
-<img src="static/imgs/microprofile_small.png">
+  <a href="https://microprofile.io/">
+    <img src="static/imgs/microprofile_small.png">
+  </a>
 </p>
-
 
 ## Architecture
 
