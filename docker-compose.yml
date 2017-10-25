@@ -1,0 +1,37 @@
+version: '3'
+services:
+  ui:
+   build: ../refarch-cloudnative-wfd-ui
+   image: wfd-ui-microprofile
+   ports:
+    - "9089:9089"
+
+  menu:
+   build: ../refarch-cloudnative-wfd-menu
+   image: wfd-menu-microprofile
+   links:
+    - appetizer
+    - entree
+    - dessert
+   ports:
+    - "9084:9084"
+   env_file:
+    - wfd.env
+
+  appetizer:
+   build: ../refarch-cloudnative-wfd-appetizer
+   image: wfd-appetizer-microprofile
+   ports:
+    - "9081:9081"
+
+  entree:
+   build: ../refarch-cloudnative-wfd-entree
+   image: wfd-entree-microprofile
+   ports:
+    - "9083:9083"
+
+  dessert:
+   build: ../refarch-cloudnative-wfd-dessert
+   image: wfd-dessert-microprofile
+   ports:
+    - "9082:9082"
