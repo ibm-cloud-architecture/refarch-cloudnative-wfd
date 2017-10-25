@@ -49,7 +49,7 @@ There are two ways to get the code for each of the application's components:
 
 2. Execute `sh clone_peers.sh` and it will clone all What's For Dinner application's components' github repos and checkout their `microprofile` branch for you.
 
-![Clone Peers](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/main_readme/clone_peers.png)
+![Clone Peers](static/imgs/main_readme/clone_peers.png)
 
 #### Build code
 
@@ -63,9 +63,6 @@ Again, there are two ways of building the code for each of the What's For Dinner
 
 As mentioned at the beginning of this section, there are several forms and shapes to run the What's For Dinner application. Here is a list of them which goes from the most basic deploymnet model to a production-like deployment:
 
-1. Run plain Liberty server for each MicroProfile microservice locally.
-2. Run plain Liberty server for each MicroProfile microservice within a Docker container locally.
-3. Run plain Liberty server for each MicroProfile microservice within a Docker container on a local Minikube environment.
-4. Deploy to ICP/BMX
-5. Integrate with Netflix OSS locally
-6. Integrate with Netflix OSS ICP/BMX
+1. Run application **locally**. Click [**here**](local_readme.md) for instructions.
+2. Run appication on a local **minikube environment**.
+3. Run application on **ICP/BMX**.
