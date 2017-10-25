@@ -4,6 +4,13 @@ The aim of this readme is to show the reader how you can run the Java MicrProfil
 
 This is one of the deployment models for the What's For Dinner application you can find outlined in the main [README](README.md#running-the-application).
 
+1. [Pre-requisites](#pre-requisites)
+2. [Run raw application](#run-raw-application)
+   1. [Appetizer, Entree and Dessert microservices](#appetizer-entree-and-dessert-microservices)
+   2. [Menu microservice](#menu-microservice)
+   3. [Menu UI microservice (BFF)](#menu-ui-microservice-bff)
+3. [Stop raw application](#stop-raw-application)
+
 ## Pre-requisites
 
 Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summery, you must have cloned all the application's components' GitHub repositories and built them up. 
