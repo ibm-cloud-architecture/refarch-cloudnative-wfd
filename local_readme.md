@@ -10,6 +10,7 @@ This is one of the deployment models for the What's For Dinner application you c
    2. [Menu microservice](#menu-microservice)
    3. [Menu UI microservice (BFF)](#menu-ui-microservice-bff)
 3. [Stop raw application](#stop-raw-application)
+4. [Automation](#automation)
 
 ## Pre-requisites
 
@@ -174,7 +175,7 @@ and what we should see in your browser is:
 
 ## Stop raw application
 
-In order to not consume resources on our laptop and also in case we wanted to run the What's For Dinner application in any of its other [deployment options](README.md#running-the-application), you must stop each of the What's For Dinner application's microservices and hence each of the Liberty server instances by executing:
+In order to not consume resources on our laptop and also in case we wanted to run the What's For Dinner application in any of its other [deployment options](README.md#running-the-application), you **must stop each of the What's For Dinner application's microservices** and hence each of the Liberty server instances by executing:
 
 1. `cd refarch-cloudnative-wfd-<microservice>`
 2. `mvn liberty:stop-server`<sup>*</sup>
@@ -210,3 +211,21 @@ $ mvn liberty:stop-server
 [INFO] Final Memory: 12M/309M
 [INFO] ------------------------------------------------------------------------
 ```
+
+## Automation
+
+In this section, we present two scripts for running all the Java MicroProfile What's For Dinner application's microservices at once on an automated fashion for those who do not want to go through each of the steps above manually. We also present a script for stopping all these microservices at once.
+
+In order to **run all the What's For Dinner application's microserives**, execute:
+
+1. `cd refarch-cloudnative-wfd/utility_scripts`
+2. `./run_all_raw_local.sh`
+
+You should see on your screen the same output you would if you manually ran each microservice individually as descibed in previous sections.
+
+Validate the What's For Dinner application is working correctly as explained on the [validate section](#validate-2) for the Menu UI microservice above.
+
+In order to **stop all the What's For Dinner application's microservices**, execute:
+
+1. `cd refarch-cloudnative-wfd/utility_scripts`
+2. `./stop_all_raw_local.sh`
