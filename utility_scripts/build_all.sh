@@ -17,11 +17,11 @@ if [ ${?} -ne 0 ]; then
   exit 1
 fi
 
-#Build all required repositories as a peer of the current directory (root microservices-refapp-netflix repository)
+#Build all required repositories as a peer of the current directory (root refarch-cloudnative-wfd repository)
 for REPO in ${REQUIRED_REPOS[@]}; do
   echo -e "\nBuilding ${GREEN}${REPO}${NC} project"
 
-  cd ../${REPO}
+  cd ../../${REPO}
 
   mvn install
 

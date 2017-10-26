@@ -33,5 +33,5 @@ read
 for REPO in ${REQUIRED_REPOS[@]}; do
   GIT_REPO="https://github.com/${GITHUB_ORG}/${REPO}.git"
   echo -e "\nCloning ${GREEN}${REPO}${NC} project"
-  git clone -b ${DEFAULT_BRANCH} ${GIT_REPO} ../${REPO}
+  git clone -b ${DEFAULT_BRANCH} ${GIT_REPO} ../../${REPO}
 done
