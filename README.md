@@ -47,7 +47,7 @@ There are two ways to get the code for each of the application's components:
 
 1. Manually executing `git clone <app-component-github-repo-uri>` and checking out the respective `microprofile` branch for each of the What's For Dinner application's components (listed [here](#project-component-repositories)).
 
-2. Execute `sh clone_peers.sh` and it will clone all What's For Dinner application's components' github repos and checkout their `microprofile` branch for you.
+2. Execute `sh clone_peers.sh` within the `utility_scripts` folder provided in this repository and it will clone all What's For Dinner application's components' github repos and checkout their `microprofile` branch for you.
 
 ![Clone Peers](static/imgs/main_readme/clone_peers.png)
 
@@ -57,7 +57,7 @@ Again, there are two ways of building the code for each of the What's For Dinner
 
 1. Manually executing `cd ../<app-component-name> && mvn install` for each of the What's For Dinner application's components (listed [here](#project-component-repositories)).
 
-2. Executing `sh build_all.sh` and it will build all What's For Dinner application's components for you.
+2. Executing `sh build_all.sh` within the `utility_scripts` folder provided in this repository and it will build all What's For Dinner application's components for you.
 
 ### Running the application.
 
