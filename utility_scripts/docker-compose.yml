@@ -28,10 +28,10 @@ services:
    build: ../../refarch-cloudnative-wfd-entree
    image: wfd-entree-microprofile
    ports:
-    - "9083:9083"
+    - "9082:9082"
 
   dessert:
    build: ../../refarch-cloudnative-wfd-dessert
    image: wfd-dessert-microprofile
    ports:
-    - "9082:9082"
+    - "9083:9083"
