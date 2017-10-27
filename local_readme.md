@@ -238,9 +238,9 @@ To run this application in Docker containers locally, you will need to use Docke
 Prerequisites: Install [Docker Compose](https://docs.docker.com/compose/install/)
 
 1. `cd utility_scripts`
-2. `docker-compose build`
-  2.1  By default, the `docker-compose.yml` is configured to build the images in the `ibmcase` namespace.  You can override this setting by running the following command instead: `WFD_DOCKER_REPO={your_docker_hub_repository} docker-compose build`.
-  2.2  If an alternate Docker namespace is used for your images, you will need to update the Kubernetes YAML files later on. **TODO** automate this similar to [here](https://github.com/IBM/Java-MicroProfile-on-Kubernetes/blob/master/scripts/change_image_name_osx.sh)
+2. `docker-compose build`  
+    1. By default, the `docker-compose.yml` is configured to build the images in the `ibmcase` namespace.  You can override this setting by running the following command instead: `WFD_DOCKER_REPO={your_docker_hub_repository} docker-compose build`.
+    2. If an alternate Docker namespace is used for your images, you will need to update the Kubernetes YAML files later on. **TODO** automate this similar to [here](https://github.com/IBM/Java-MicroProfile-on-Kubernetes/blob/master/scripts/change_image_name_osx.sh)
 3. `docker-compose up -d` _(the `-d` isn't required here, but it allows us to do more in the same Terminal window if we start the containers in the background)_
 4. `docker-compose logs --follow`
 5. Access the application via `http://localhost/WfdFrontEnd`
