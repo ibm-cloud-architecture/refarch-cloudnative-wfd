@@ -1,4 +1,10 @@
 #!/bin/bash
+check(){
+  if [ $? -ne 0 ]; then
+    echo -e "${RED}${REPO} failed to start microservice ${MICRO}${NC}"
+    exit 1
+  fi
+}
 
 SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $SCRIPTDIR/.reporc
@@ -24,13 +30,34 @@ for REPO in ${REQUIRED_REPOS[@]}; do
 
   cd ../../${REPO}
 
-  mvn liberty:start-server
+  case ${MICRO} in
+    appetizer)
+                mvn liberty:start-server -DtestServerHttpPort=9081
+                check
+                ;;
+    entree)
+                mvn liberty:start-server -DtestServerHttpPort=9082
+                check
+                ;;
+    dessert)
+                mvn liberty:start-server -DtestServerHttpPort=9083
+                check
+                ;;
+    menu)
+                mvn liberty:start-server -DtestServerHttpPort=9180 -Dappetizer_port=9081 -Dentree_port=9082 -Ddessert_port=9083
+                check
+                ;;
+    ui)
+                mvn liberty:start-server
+                check
+                ;;
+    *)
+                echo -e "${RED}${MICRO} is not a valid microservice ${MICRO}${NC}"
+                exit 1
+  esac
 
-  if [ $? -ne 0 ]; then
-      echo -e "${RED}${REPO} failed to start microservice ${MICRO}${NC}"
-      exit 1
-  else
-    echo -e "${GREEN}DONE${NC}"
-  fi
+  echo -e "${GREEN}DONE${NC}"
+
   cd ${SCRIPTDIR}
+
 done
