@@ -2,36 +2,38 @@ version: '3'
 services:
   ui:
    build: ../../refarch-cloudnative-wfd-ui
-   image: wfd-ui-microprofile
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-ui:microprofile
+   depends_on:
+    - menu
    ports:
-    - "9089:9089"
+    - "80:9080"
 
   menu:
    build: ../../refarch-cloudnative-wfd-menu
-   image: wfd-menu-microprofile
-   links:
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-menu:microprofile
+   depends_on:
     - appetizer
     - entree
     - dessert
    ports:
-    - "9084:9084"
+    - "9180:9080"
    env_file:
     - wfd.env
 
   appetizer:
    build: ../../refarch-cloudnative-wfd-appetizer
-   image: wfd-appetizer-microprofile
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-appetizer:microprofile
    ports:
-    - "9081:9081"
+    - "9280:9080"
 
   entree:
    build: ../../refarch-cloudnative-wfd-entree
-   image: wfd-entree-microprofile
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-entree:microprofile
    ports:
-    - "9082:9082"
+    - "9380:9080"
 
   dessert:
    build: ../../refarch-cloudnative-wfd-dessert
-   image: wfd-dessert-microprofile
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-dessert:microprofile
    ports:
-    - "9083:9083"
+    - "9480:9080"

@@ -11,10 +11,11 @@ This is one of the deployment models for the What's For Dinner application you c
    3. [Menu UI microservice (BFF)](#menu-ui-microservice-bff)
 3. [Stop raw application](#stop-raw-application)
 4. [Automation](#automation)
+5. [Run containerized application](#run-containerized-application)
 
 ## Pre-requisites
 
-Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summery, you must have cloned all the application's components' GitHub repositories and built them up. 
+Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summery, you must have cloned all the application's components' GitHub repositories and built them up.
 
 ## Run raw application
 
@@ -44,11 +45,11 @@ We will start by running the microservices at the bottom of the application arch
 ```
 $ mvn liberty:start-server
 [INFO] Scanning for projects...
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building WfdAppetizer 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- liberty-maven-plugin:1.2:start-server (default-cli) @ WfdAppetizer ---
 [INFO] CWWKM2102I: Using installDirectory : /Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-appetizer/target/liberty/wlp.
 [INFO] CWWKM2102I: Using serverName : defaultServer.
@@ -186,11 +187,11 @@ In order to not consume resources on our laptop and also in case we wanted to ru
 ```
 $ mvn liberty:stop-server
 [INFO] Scanning for projects...
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building WfdDessert 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- liberty-maven-plugin:1.2:stop-server (default-cli) @ WfdDessert ---
 [INFO] CWWKM2102I: Using installDirectory : /Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-dessert/target/liberty/wlp.
 [INFO] CWWKM2102I: Using serverName : defaultServer.
@@ -229,3 +230,19 @@ In order to **stop all the What's For Dinner application's microservices**, exec
 
 1. `cd refarch-cloudnative-wfd/utility_scripts`
 2. `./stop_all_raw_local.sh`
+
+## Run containerized application
+
+To run this application in Docker containers locally, you will need to use Docker Compose and the provided `docker-compose.yml` file.  The following commands will be run from the root of this repository.
+
+Prerequisites: Install [Docker Compose](https://docs.docker.com/compose/install/)
+
+1. `cd utility_scripts`
+2. `docker-compose build`
+  2.1  By default, the `docker-compose.yml` is configured to build the images in the `ibmcase` namespace.  You can override this setting by running the following command instead: `WFD_DOCKER_REPO={your_docker_hub_repository} docker-compose build`.
+  2.2  If an alternate Docker namespace is used for your images, you will need to update the Kubernetes YAML files later on. **TODO** automate this similar to [here](https://github.com/IBM/Java-MicroProfile-on-Kubernetes/blob/master/scripts/change_image_name_osx.sh)
+3. `docker-compose up -d` _(the `-d` isn't required here, but it allows us to do more in the same Terminal window if we start the containers in the background)_
+4. `docker-compose logs --follow`
+5. Access the application via `http://localhost/WfdFrontEnd`
+
+To stop the containerized application, run the `docker-compose down` command from the same directory.
