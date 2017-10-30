@@ -125,3 +125,18 @@ As a result, when any microservice makes a rest call to any service, this will b
 ### Stop the application
 
 To stop the containerized application, run the `docker-compose -p wfd down` command from the same directory.
+
+```
+$ docker-compose -p wfd down
+Stopping wfd_ui_1        ... done
+Stopping wfd_menu_1      ... done
+Stopping wfd_dessert_1   ... done
+Stopping wfd_entree_1    ... done
+Stopping wfd_appetizer_1 ... done
+Removing wfd_ui_1        ... done
+Removing wfd_menu_1      ... done
+Removing wfd_dessert_1   ... done
+Removing wfd_entree_1    ... done
+Removing wfd_appetizer_1 ... done
+Removing network wfd_default
+```
