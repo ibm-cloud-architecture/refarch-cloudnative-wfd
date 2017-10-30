@@ -52,7 +52,7 @@ There are two ways to get the code for each of the application's components:
 2. Execute `sh clone_peers.sh` within the `utility_scripts` folder provided in this repository and it will clone all What's For Dinner application's components' github repos and checkout their `microprofile` branch for you.
 
 ```
-$ ./clone_peers.sh 
+$ ./clone_peers.sh
 Cloning from GitHub Organization or User Account of "ibm-cloud-architecture".
 --> To override this value, run "export CUSTOM_GITHUB_ORG=your-github-org" prior to running this script.
 Cloning from repository branch "microprofile".
@@ -115,5 +115,6 @@ Again, there are two ways of building the code for each of the What's For Dinner
 As mentioned at the beginning of this section, there are several forms and shapes to run the What's For Dinner application. Here is a list of them which goes from the most basic deploymnet model to a production-like deployment:
 
 1. Run application **locally**. Click [**here**](local_readme.md) for instructions.
-2. Run appication on a local **minikube environment**.
-3. Run application on **ICP/BMX**.
+2. Run application in **Docker containers locally**. Click [**here**](local_docker_readme.md) for instructions.
+3. Run application on a local **minikube environment**.
+4. Run application on **ICP/BMX**.
