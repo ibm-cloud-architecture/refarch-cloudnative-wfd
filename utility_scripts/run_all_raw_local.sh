@@ -44,7 +44,10 @@ for REPO in ${REQUIRED_REPOS[@]}; do
                 check
                 ;;
     menu)
-                mvn liberty:start-server -DtestServerHttpPort=9180 -Dappetizer_port=9081 -Dentree_port=9082 -Ddessert_port=9083
+                export appetizer_url=http://localhost:9081/WfdAppetizer/rest/appetizer
+                export entree_url=http://localhost:9082/WfdEntree/rest/entree
+                export dessert_url=http://localhost:9083/WfdDessert/rest/dessert
+                mvn liberty:start-server -DtestServerHttpPort=9180
                 check
                 ;;
     ui)
