@@ -95,8 +95,8 @@ user     36783   0.0  2.1  8374736 359356 s001  S     4:33pm   0:14.25 /Library/
 
 ```
 http://localhost:9081/WfdAppetizer/rest/appetizer
-http://localhost:9082/WfdDessert/rest/dessert
-http://localhost:9083/WfdEntree/rest/entree
+http://localhost:9082/WfdEntree/rest/entree
+http://localhost:9083/WfdDessert/rest/dessert
 ```
 and what we should see in your browser is:
 
@@ -132,7 +132,7 @@ user     37880   0.2  2.2  8393228 366764 s001  S     5:42pm   0:15.26 /Library/
 2. Ensure the Menu microservice is functioning by poking its rest service. In order to do that, we will point our web browser to `http://localhost:<MENU_PORT>/<MENU_WAR_CONTEXT>/<MENU_APPLICATION_PATH>/<MENU_ENDPOINT>` (you can read how to find out the value for these variables on the main readme in the Menu microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu microservice, the url should be:
 
 ```
-http://localhost:9084/WfdMenu/rest/menu
+http://localhost:9180/WfdMenu/rest/menu
 ```
 and what we should see in your browser is:
 
@@ -166,7 +166,7 @@ user     38040   0.0  2.2  8383132 372232 s001  S     5:55pm   0:13.47 /Library/
 2. Ensure the Menu UI (BFF) microservice is functioning by pointing your web browser to the Web application. That is, point your browser to `http://localhost:<MENU_PORT>/<MENU_WAR_CONTEXT>` (you can read how to find out the value for these variables on the main readme in the Menu UI microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu UI microservice, the url should be:
 
 ```
-http://localhost:9089/WfdFrontEnd
+http://localhost:9080/WfdFrontEnd
 ```
 and what we should see in your browser is:
 
