@@ -9,9 +9,8 @@ services:
     - "8181:8181"
    environment:
     - eureka.client.enabled=false
-    - wfd.menu.url=http://menu/menu
     - ribbon.eureka.enabled=false
-    - ribbon.listOfServers=http://menu:8180
+    - menu-service.ribbon.listOfServers=http://menu:8180
 
   menu:
    build: ../../refarch-cloudnative-wfd-menu/docker
@@ -24,10 +23,11 @@ services:
     - "8180:8180"
    environment:
     - eureka.client.enabled=false
-    - wfd.menu.appetizers.url=http://appetizer/appetizers
-    - wfd.menu.entrees.url=http://entree/entrees
-    - wfd.menu.desserts.url=http://dessert/desserts
     - spring.cloud.bus.enabled=false
+    - ribbon.eureka.enabled=false
+    - appetizer-service.ribbon.listOfServers=http://appetizer:8081
+    - entree-service.ribbon.listOfServers=http://entree:8082
+    - dessert-service.ribbon.listOfServers=http://dessert:8083
 
   appetizer:
    build: ../../refarch-cloudnative-wfd-appetizer/docker

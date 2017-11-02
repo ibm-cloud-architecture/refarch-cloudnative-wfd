@@ -46,19 +46,19 @@ for REPO in ${REQUIRED_REPOS[@]}; do
                 ;;
     menu)
                 java  -Deureka.client.enabled=false \
-                      -Dwfd.menu.appetizers.url=http://localhost:8081/appetizers \
-                      -Dwfd.menu.entrees.url=http://localhost:8082/entrees \
-                      -Dwfd.menu.desserts.url=http://localhost:8083/desserts \
+                      -Dribbon.eureka.enabled=false \
+                      -Dappetizer-service.ribbon.listOfServers=localhost:8081 \
+                      -Dentree-service.ribbon.listOfServers=localhost:8082 \
+                      -Ddessert-service.ribbon.listOfServers=localhost:8083 \
                       -Dspring.cloud.bus.enabled=false \
                       -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
                 ;;
     ui)
-                java  -Dwfd.menu.url=http://localhost:8180/menu \
-                      -Deureka.client.enabled=false \
+                java  -Deureka.client.enabled=false \
                       -Dribbon.eureka.enabled=false \
-                      -Dribbon.listOfServers=localhost:8180 \
+                      -Dmenu-service.ribbon.listOfServers=localhost:8180 \
                       -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
