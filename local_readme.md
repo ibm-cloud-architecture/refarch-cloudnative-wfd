@@ -1,6 +1,6 @@
 # Run the What's For Dinner application locally - MicroProfile
 
-The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Liberty server. Afterwards, we will containerise each of the these components and run the entire containerised application locally on your laptop too.
+The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Liberty server.
 
 This is one of the deployment models for the What's For Dinner application you can find outlined in the main [README](README.md#running-the-application).
 
@@ -14,7 +14,7 @@ This is one of the deployment models for the What's For Dinner application you c
 
 ## Pre-requisites
 
-Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summery, you must have cloned all the application's components' GitHub repositories and built them up.
+Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
 
 ## Run raw application
 
@@ -153,7 +153,7 @@ In order to run the Menu UI microservice, execute:
 
 #### Validate
 
-To validate our Menu microservice is running fine, we will:
+To validate our Menu UI microservice is running fine, we will:
 
 1. Ensure its Liberty server is running by executing the command `ps aux | grep wfd-ui`. We should be able to find the Liberty server running the Menu microservice:
 
