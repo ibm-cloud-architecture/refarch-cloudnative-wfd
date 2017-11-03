@@ -32,7 +32,7 @@ refarch-cloudnative-wfd-ui/
 
 **IMPORTANT:** The microservices making up the What's For Dinner application on its Spring version are developed to integrate with [**Spring Cloud Netflix**](https://cloud.spring.io/spring-cloud-netflix/). Spring Cloud Netflix provides Netflix OSS integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms. With a few simple annotations you can quickly enable and configure the common patterns inside your application and build large distributed systems with battle-tested Netflix components. The patterns provided include Service Discovery (Eureka), Circuit Breaker (Hystrix), Intelligent Routing (Zuul) and Client Side Load Balancing (Ribbon).
 
-Since we want on this first deployment model to simulate a plain Spring based microservices application without integration to any other framework to mirror the [Java MicroProfile version](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/local_readme.md), you will see that many of the commands below will include flags to turn the Spring Cloud Netflix integration off.
+Since we want to simulate a plain Spring based microservices application without integrating it to any other framework on this first deployment model to mirror the [Java MicroProfile version](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/microprofile), you will see that many of the commands below will include flags to turn that Spring Cloud Netflix integration off.
 
 ### Appetizer, Entree and Dessert microservices
 
@@ -94,6 +94,7 @@ In order to run the Menu microservice, execute:
    - _`-Deureka.client.enabled=false` turns off the Service Discovery functionality that Spring Cloud Netflix offers_
    - _`-Dribbon.eureka.enabled=false` turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers_
    - _-`D<MICROSERVICE>-service.ribbon.listOfServers=localhost:PORT` provides the list of MICROSERVICE (appetizer/entree/dessert) servers available to the Ribbon Client Side Load Balancer to be used during any REST call to those microservices_
+   - _`-Dspring.cloud.bus.enabled=false` avoid Spring Cloud Bus to link nodes of a distributed system with a lightweight message broker_
    - _`JAR_FILE` is the build outcome (wfd-menu-0.0.1-SNAPSHOT.jar most likely)_
    - _`> /dev/null` redirects the Tomcat server output so that our screen does not get filled_
    - _`&` will run the microservice on the background so that we can keep using our terminal_
