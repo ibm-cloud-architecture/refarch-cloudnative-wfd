@@ -14,7 +14,7 @@ This is one of the deployment models for the What's For Dinner application you c
 
 ## Pre-requisites
 
-Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summery, you must have cloned all the application's components' GitHub repositories and built them up.
+Please, complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
 
 ## Run raw application
 
