@@ -42,15 +42,13 @@ Since we want on this first deployment model to simulate a plain Spring based mi
 We will start by running the microservices at the bottom of the application architecture which are the **appetizer, dessert and entree** microservices. In order to run these, you need to execute the following for **each of the mentioned microservices**:
 
 1. `cd refarch-cloudnative-wfd-<microservice>`
-2. `java -Deureka.client.enabled=false -jar target/JAR\_FILE > /dev/null &` <sup>*</sup>
-   _where
-   -Deureka.client.enabled=false turns off the Service Discovery functionality that Spring Cloud Netflix offers,
-   JAR_FILE is the build outcome (for instance, JAR_FILE value for the appetizer microservice is _wfd-appetizer-0.0.1-SNAPSHOT.jar_),
-   > /dev/null redirects the Tomcat server output so that our screen does not get filled and
-   & will run the microservice on the background so that we can keep using our terminal
-3. `cd ..`
+2. `java -Deureka.client.enabled=false -jar target/JAR_FILE > /dev/null &` where
+   - _`-Deureka.client.enabled=false` turns off the Service Discovery functionality that Spring Cloud Netflix offers_
+   - _`JAR_FILE` is the build outcome (for instance, JAR_FILE value for the appetizer microservice is _wfd-appetizer-0.0.1-SNAPSHOT.jar_)_
+   - _`> /dev/null` redirects the Tomcat server output so that our screen does not get filled_
+   - _`&` will run the microservice on the background so that we can keep using our terminal_
 
-<sup>*</sup> After running this command, you should see a similar output to this:
+After running this command, you should see a similar output to this:
 ```
 $ java -Deureka.client.enabled=false -jar target/wfd-appetizer-0.0.1-SNAPSHOT.jar > /dev/null &
 [1] 22592
@@ -93,17 +91,15 @@ and what we should see in your browser is:
 In order to run the Menu microservice, execute:
 
 1. `cd refarch-cloudnative-wfd-menu`
-2. `java  -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dappetizer-service.ribbon.listOfServers=localhost:8081 -Dentree-service.ribbon.listOfServers=localhost:8082 -Ddessert-service.ribbon.listOfServers=localhost:8083 -Dspring.cloud.bus.enabled=false  -jar target/JAR_FILE > /dev/null &` <sup>*</sup>
-   _where
-   -Deureka.client.enabled=false turns off the Service Discovery functionality that Spring Cloud Netflix offers,
-   -Dribbon.eureka.enabled=false turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers,
-   -D<MICROSERVICE>-service.ribbon.listOfServers=localhost:PORT provides the list of MICROSERVICE (appetizer/entree/dessert) servers available to the Ribbon Client Side Load Balancer to be used during any REST call to those microservices,
-   JAR_FILE is the build outcome (wfd-menu-0.0.1-SNAPSHOT.jar most likely),
-   > /dev/null redirects the Tomcat server output so that our screen does not get filled and
-   & will run the microservice on the background so that we can keep using our terminal
-3. `cd ..`
+2. `java  -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dappetizer-service.ribbon.listOfServers=localhost:8081 -Dentree-service.ribbon.listOfServers=localhost:8082 -Ddessert-service.ribbon.listOfServers=localhost:8083 -Dspring.cloud.bus.enabled=false  -jar target/JAR_FILE > /dev/null &` where
+   - _`-Deureka.client.enabled=false` turns off the Service Discovery functionality that Spring Cloud Netflix offers_
+   - _`-Dribbon.eureka.enabled=false` turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers_
+   - _-`D<MICROSERVICE>-service.ribbon.listOfServers=localhost:PORT` provides the list of MICROSERVICE (appetizer/entree/dessert) servers available to the Ribbon Client Side Load Balancer to be used during any REST call to those microservices_
+   - _`JAR_FILE` is the build outcome (wfd-menu-0.0.1-SNAPSHOT.jar most likely)_
+   - _`> /dev/null` redirects the Tomcat server output so that our screen does not get filled_
+   - _`&` will run the microservice on the background so that we can keep using our terminal_
 
-<sup>*</sup> Again, you should see the PID for the Tomcat server running the menu microservice.
+Again, you should see the PID for the Tomcat server running the menu microservice.
 
 #### Validate
 
@@ -134,17 +130,15 @@ and what we should see in your browser is:
 In order to run the Menu UI microservice, execute:
 
 1. `cd refarch-cloudnative-wfd-ui`
-2. `java  -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dmenu-service.ribbon.listOfServers=localhost:8180 -jar target/JAR_FILE > /dev/null &`<sup>*</sup>
-   _where
-   -Deureka.client.enabled=false turns off the Service Discovery functionality that Spring Cloud Netflix offers,
-   -Dribbon.eureka.enabled=false turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers for the menu microservice,
-   -Dmenu-service.ribbon.listOfServers=localhost:8180 provides the list of menu servers available to the Ribbon Client Side Load Balancer for a particular MICROSERVICE to be used during any REST call to the menu microservice,
-   JAR_FILE is the build outcome (wfd-ui-0.0.1-SNAPSHOT.jar most likely),
-   > /dev/null redirects the Tomcat server output so that our screen does not get filled and
-   & will run the microservice on the background so that we can keep using our terminal
-3. `cd ..`
+2. `java  -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dmenu-service.ribbon.listOfServers=localhost:8180 -jar target/JAR_FILE > /dev/null &` where
+   - _`-Deureka.client.enabled=false` turns off the Service Discovery functionality that Spring Cloud Netflix offers,
+   - _`-Dribbon.eureka.enabled=false` turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers for the menu microservice_
+   - _`-Dmenu-service.ribbon.listOfServers=localhost:8180` provides the list of menu servers available to the Ribbon Client Side Load Balancer for a particular MICROSERVICE to be used during any REST call to the menu microservice_
+   - _`JAR_FILE` is the build outcome (wfd-ui-0.0.1-SNAPSHOT.jar most likely)_
+   - _`> /dev/null` redirects the Tomcat server output so that our screen does not get filled_
+   - _`&` will run the microservice on the background so that we can keep using our terminal_
 
-<sup>*</sup> YAgain, you should see the PID for the Tomcat server running the menu microservice.
+Again, you should see the PID for the Tomcat server running the menu microservice.
 
 #### Validate
 
