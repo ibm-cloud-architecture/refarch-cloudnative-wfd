@@ -1,6 +1,6 @@
 # Run the What's For Dinner application locally - MicroProfile
 
-The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Liberty server. Afterwards, we will containerise each of the these components and run the entire containerised application locally on your laptop too.
+The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Liberty server.
 
 This is one of the deployment models for the What's For Dinner application you can find outlined in the main [README](README.md#running-the-application).
 
