@@ -153,7 +153,7 @@ In order to run the Menu UI microservice, execute:
 
 #### Validate
 
-To validate our Menu microservice is running fine, we will:
+To validate our Menu UI microservice is running fine, we will:
 
 1. Ensure its Liberty server is running by executing the command `ps aux | grep wfd-ui`. We should be able to find the Liberty server running the Menu microservice:
 
