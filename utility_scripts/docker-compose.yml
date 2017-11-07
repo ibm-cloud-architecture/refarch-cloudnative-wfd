@@ -1,0 +1,54 @@
+version: '3'
+services:
+  ui:
+   build: ../../refarch-cloudnative-wfd-ui/docker
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-ui:spring
+   depends_on:
+    - menu
+   ports:
+    - "80:8181"
+   environment:
+    - eureka.client.enabled=false
+    - ribbon.eureka.enabled=false
+    - menu-service.ribbon.listOfServers=http://menu:8180
+
+  menu:
+   build: ../../refarch-cloudnative-wfd-menu/docker
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-menu:spring
+   depends_on:
+    - appetizer
+    - entree
+    - dessert
+   ports:
+    - "8180:8180"
+   environment:
+    - eureka.client.enabled=false
+    - spring.cloud.bus.enabled=false
+    - ribbon.eureka.enabled=false
+    - appetizer-service.ribbon.listOfServers=http://appetizer:8081
+    - entree-service.ribbon.listOfServers=http://entree:8082
+    - dessert-service.ribbon.listOfServers=http://dessert:8083
+
+  appetizer:
+   build: ../../refarch-cloudnative-wfd-appetizer/docker
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-appetizer:spring
+   ports:
+    - "8081:8081"
+   environment:
+     - eureka.client.enabled=false
+
+  entree:
+   build: ../../refarch-cloudnative-wfd-entree/docker
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-entree:spring
+   ports:
+    - "8082:8082"
+   environment:
+     - eureka.client.enabled=false
+
+  dessert:
+   build: ../../refarch-cloudnative-wfd-dessert/docker
+   image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-dessert:spring
+   ports:
+    - "8083:8083"
+   environment:
+     - eureka.client.enabled=false
