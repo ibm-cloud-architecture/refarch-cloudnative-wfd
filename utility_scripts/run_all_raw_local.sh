@@ -30,35 +30,30 @@ for REPO in ${REQUIRED_REPOS[@]}; do
 
   case ${MICRO} in
     appetizer)
-                java -Deureka.client.enabled=false -jar target/${EXECUTABLE} > /dev/null &
+                java -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
                 ;;
     entree)
-                java -Deureka.client.enabled=false -jar target/${EXECUTABLE} > /dev/null &
+                java -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
                 ;;
     dessert)
-                java -Deureka.client.enabled=false -jar target/${EXECUTABLE} > /dev/null &
+                java -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
                 ;;
     menu)
-                java  -Deureka.client.enabled=false \
-                      -Dribbon.eureka.enabled=false \
-                      -Dappetizer-service.ribbon.listOfServers=localhost:8081 \
-                      -Dentree-service.ribbon.listOfServers=localhost:8082 \
-                      -Ddessert-service.ribbon.listOfServers=localhost:8083 \
-                      -Dspring.cloud.bus.enabled=false \
+                java  -Dwfd.menu.appetizers.url=http://localhost:8081/appetizers \
+                      -Dwfd.menu.entrees.url=http://localhost:8082/entrees \
+                      -Dwfd.menu.desserts.url=http://localhost:8083/desserts \
                       -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
                 ;;
     ui)
-                java  -Deureka.client.enabled=false \
-                      -Dribbon.eureka.enabled=false \
-                      -Dmenu-service.ribbon.listOfServers=localhost:8180 \
+                java  -Dwfd.menu.url=http://localhost:8180/menu \
                       -jar target/${EXECUTABLE} > /dev/null &
                 WFD_PROCESSES="${WFD_PROCESSES} $!"
                 check
