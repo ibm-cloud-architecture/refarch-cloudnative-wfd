@@ -11,7 +11,7 @@ This repository contains the **Spring Cloud** implementation of the microservice
 ## Architecture
 
 <p align="center">
-<img src="static/imgs/spring-cloud-architecture.png">
+<img src="static/imgs/main_readme/spring-cloud-architecture.png">
 </p>
 
 ## Implementation
