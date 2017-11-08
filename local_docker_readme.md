@@ -22,11 +22,9 @@ services:
    depends_on:
     - menu
    ports:
-    - "8181:8181"
+    - "80:8181"
    environment:
-    - eureka.client.enabled=false
-    - ribbon.eureka.enabled=false
-    - menu-service.ribbon.listOfServers=http://menu:8180
+    - wfd.menu.url=http://menu:8180/menu
 
   menu:
    build: ../../refarch-cloudnative-wfd-menu/docker
@@ -38,49 +36,30 @@ services:
    ports:
     - "8180:8180"
    environment:
-    - eureka.client.enabled=false
-    - spring.cloud.bus.enabled=false
-    - ribbon.eureka.enabled=false
-    - appetizer-service.ribbon.listOfServers=http://appetizer:8081
-    - entree-service.ribbon.listOfServers=http://entree:8082
-    - dessert-service.ribbon.listOfServers=http://dessert:8083
+    - wfd.menu.appetizers.url=http://appetizer:8081/appetizers
+    - wfd.menu.entrees.url=http://entree:8082/entrees
+    - wfd.menu.desserts.url=http://dessert:8083/desserts
 
   appetizer:
    build: ../../refarch-cloudnative-wfd-appetizer/docker
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-appetizer:spring
    ports:
     - "8081:8081"
-   environment:
-     - eureka.client.enabled=false
 
   entree:
    build: ../../refarch-cloudnative-wfd-entree/docker
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-entree:spring
    ports:
     - "8082:8082"
-   environment:
-     - eureka.client.enabled=false
 
   dessert:
    build: ../../refarch-cloudnative-wfd-dessert/docker
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-dessert:spring
    ports:
     - "8083:8083"
-   environment:
-     - eureka.client.enabled=false
 ```
 
-where we have defined our 5 services (**appetizer**, **entree**, **dessert**, **menu** and **ui**), where their build has to happen, what the image name and namespace for the Docker image has to be and what ports will the Docker container open for the application to listen to. We have also make the menu microservice be dependant on appetizer, entree and dessert services so that Docker Compose will make sure these are available for the menu microservice.
-
-Finally, since we want to simulate a plain Spring based microservices application on this first deployment model to mirror the [Java MicroProfile version](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/microprofile),
-we have declared the appropriate environment variables so that each of the microservices disables/turns off the [**Spring Cloud Netflix**](https://cloud.spring.io/spring-cloud-netflix/) bits and pieces they are built with. Spring Cloud Netflix provides Netflix OSS integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms. With a few simple annotations you can quickly enable and configure the common patterns inside your application and build large distributed systems with battle-tested Netflix components. The patterns provided include Service Discovery (Eureka), Circuit Breaker (Hystrix), Intelligent Routing (Zuul) and Client Side Load Balancing (Ribbon).
-
-These tags are:
-
-- `eureka.client.enabled=false` turns off the Service Discovery functionality that Spring Cloud Netflix offers.
-- `ribbon.eureka.enabled=false` turns off Eureka providing the [Ribbon Client Side Load Balancer](https://spring.io/guides/gs/client-side-load-balancing/) with the list of servers.
-- `<MICROSERVICE>-service.ribbon.listOfServers=http://<docker_compose_service>:PORT` provides the list of MICROSERVICE (appetizer/entree/dessert/menu) servers available to the Ribbon Client Side Load Balancer to be used during any REST call to those microservices.
-- `spring.cloud.bus.enabled=false` avoid Spring Cloud Bus to link nodes of a distributed system with a lightweight message broker.
+where we have defined our 5 services (**appetizer**, **entree**, **dessert**, **menu** and **ui**), where their build has to happen, what the image name and namespace for the Docker image has to be and what ports will the Docker container open for the application to listen to. We have also make the menu microservice be dependant on appetizer, entree and dessert services so that Docker Compose will make sure these are available for the menu microservice. Finally, we have declared environment variables for the menu and menu ui microservices to be accessed at runtime with the location for the microservices they, respectively, need to call down to.
 
 As you can see, the communication between microservices will now happen based on the service name these have been defined with in the `docker-compose.yml` file rather than using their IP addresses (i.e. localhost). The reason why this works is because Docker Compose will create a User Defined Network to which all the containers spawn up (based on your `docker-compose.yml` file) will be attached to and be part of.
 As a result, when any microservice makes a rest call to any service, this will be served because of the DNS and network capabilities Docker Compose has created and enabled for us in the background.
