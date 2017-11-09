@@ -1,7 +1,7 @@
 version: '3'
 services:
   ui:
-   build: ../../refarch-cloudnative-wfd-ui/docker
+   build: ../../refarch-cloudnative-wfd-ui
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-ui:spring
    depends_on:
     - menu
@@ -11,7 +11,7 @@ services:
     - wfd.menu.url=http://menu:8180/menu
 
   menu:
-   build: ../../refarch-cloudnative-wfd-menu/docker
+   build: ../../refarch-cloudnative-wfd-menu
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-menu:spring
    depends_on:
     - appetizer
@@ -25,19 +25,19 @@ services:
     - wfd.menu.desserts.url=http://dessert:8083/desserts
 
   appetizer:
-   build: ../../refarch-cloudnative-wfd-appetizer/docker
+   build: ../../refarch-cloudnative-wfd-appetizer
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-appetizer:spring
    ports:
     - "8081:8081"
 
   entree:
-   build: ../../refarch-cloudnative-wfd-entree/docker
+   build: ../../refarch-cloudnative-wfd-entree
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-entree:spring
    ports:
     - "8082:8082"
 
   dessert:
-   build: ../../refarch-cloudnative-wfd-dessert/docker
+   build: ../../refarch-cloudnative-wfd-dessert
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-dessert:spring
    ports:
     - "8083:8083"
