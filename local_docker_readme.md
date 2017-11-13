@@ -17,7 +17,7 @@ In our case, our [docker-compose.yml](utility_scripts/docker-compose.yml) file l
 version: '3'
 services:
   ui:
-   build: ../../refarch-cloudnative-wfd-ui/docker
+   build: ../../refarch-cloudnative-wfd-ui
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-ui:spring
    depends_on:
     - menu
@@ -27,7 +27,7 @@ services:
     - wfd.menu.url=http://menu:8180/menu
 
   menu:
-   build: ../../refarch-cloudnative-wfd-menu/docker
+   build: ../../refarch-cloudnative-wfd-menu
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-menu:spring
    depends_on:
     - appetizer
@@ -41,19 +41,19 @@ services:
     - wfd.menu.desserts.url=http://dessert:8083/desserts
 
   appetizer:
-   build: ../../refarch-cloudnative-wfd-appetizer/docker
+   build: ../../refarch-cloudnative-wfd-appetizer
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-appetizer:spring
    ports:
     - "8081:8081"
 
   entree:
-   build: ../../refarch-cloudnative-wfd-entree/docker
+   build: ../../refarch-cloudnative-wfd-entree
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-entree:spring
    ports:
     - "8082:8082"
 
   dessert:
-   build: ../../refarch-cloudnative-wfd-dessert/docker
+   build: ../../refarch-cloudnative-wfd-dessert
    image: ${WFD_DOCKER_REPO:-ibmcase}/wfd-dessert:spring
    ports:
     - "8083:8083"
@@ -74,21 +74,7 @@ As a result, when any microservice makes a rest call to any service, this will b
 **Steps:**
 
 1. `cd utility_scripts`
-2. `docker-compose build`  
-    - By default, the `docker-compose.yml` is configured to build the images in the `ibmcase` namespace.  You can override this setting by running the following command instead: `WFD_DOCKER_REPO={your_docker_hub_repository} docker-compose build`. (If an alternate Docker namespace is used for your images, you will need to update the Kubernetes YAML files later on. **TODO** automate this similar to [here](https://github.com/IBM/Java-MicroProfile-on-Kubernetes/blob/master/scripts/change_image_name_osx.sh))
-
-   If you execute `docker images` you should see your new Docker images on your local Docker registry:
-   ```
-   $ docker images
-   REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
-   ibmcase/wfd-menu          spring              bfe003309448        23 hours ago        728MB
-   ibmcase/wfd-appetizer     spring              82aa78dcd8ea        23 hours ago        720MB
-   ibmcase/wfd-dessert       spring              ab6e8456329f        23 hours ago        720MB
-   ibmcase/wfd-entree        spring              a92613a585df        23 hours ago        720MB
-   ibmcase/wfd-ui            spring              ce321e69a3e4        2 days ago          740MB
-   java                      8                   d23bdf5b1b1b        2 days ago          643MB
-   ```
-3. `docker-compose -p wfd up -d`
+2. `docker-compose -p wfd up -d`
    - _the `-d` isn't required here, but it allows us to do more in the same Terminal window if we start the containers in the background_
    - _the `-p` isn't required here, but it allows us to set a project name which will then be used for any Docker resource creation such as containers' name and network's name_
 

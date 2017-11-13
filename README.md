@@ -49,7 +49,7 @@ There are two ways to get the code for each of the application's components:
 
 1. Manually executing `git clone <app-component-github-repo-uri>` and checking out the respective `spring` branch for each of the What's For Dinner application's components (listed [here](#project-component-repositories)).
 
-2. Execute `sh clone_peers.sh` within the `utility_scripts` folder provided in this repository and it will clone all What's For Dinner application's components' github repos and checkout their `spring` branch for you.
+2. Execute `cd utility_scripts && sh clone_peers.sh` and you will get all What's For Dinner application's components' github repos cloned on your laptop and their `spring` branch checked out for you.
 
 ```
 $ ./clone_peers.sh
@@ -104,11 +104,48 @@ Checking out files: 100% (27735/27735), done.
 
 #### Build code
 
-Again, there are two ways of building the code for each of the What's For Dinner application's components:
+We are using [Apache Maven](https://maven.apache.org/) for managing the build process of our application, which is is made up of a build process for each of the microservices that compose the What's For Dinner application. Therefore, in order to build the application (and their Docker images!) you just need to execute:
 
-1. Manually executing `cd ../<app-component-name> && mvn clean package` for each of the What's For Dinner application's components (listed [here](#project-component-repositories)).
+`mvn clean package`
 
-2. Executing `sh build_all.sh` within the `utility_scripts` folder provided in this repository and it will build all What's For Dinner application's components for you.
+You should see the following output:
+
+```
+[INFO] ------------------------------------------------------------------------
+[INFO] Building project 0.1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ project ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO]
+[INFO] AppetizerOptions ................................... SUCCESS [ 37.869 s]
+[INFO] EntreeOptions ...................................... SUCCESS [ 16.481 s]
+[INFO] DessertOptions ..................................... SUCCESS [ 15.164 s]
+[INFO] MealOptions ........................................ SUCCESS [ 15.190 s]
+[INFO] MealUI ............................................. SUCCESS [ 19.552 s]
+[INFO] project ............................................ SUCCESS [  0.026 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:44 min
+[INFO] Finished at: 2017-11-13T11:12:00+01:00
+[INFO] Final Memory: 65M/501M
+[INFO] ------------------------------------------------------------------------
+```
+
+After the above has finished, you will have the code compiled and each microservice built into an executable jar file you can find in their respective target folder (refarch-cloudnative-wfd-<_microservice_>/taget), which is where maven produces its output. Also, you should see all your microservices containerised on a Docker image by executing `docker images` on your laptop:
+
+```
+$ docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+ibmcase/wfd-ui          spring              99d905bb8624        2 days ago          149MB
+ibmcase/wfd-menu        spring              2add74e292ea        2 days ago          141MB
+ibmcase/wfd-dessert     spring              6823cada357e        2 days ago          141MB
+ibmcase/wfd-entree      spring              c3f5a59194eb        2 days ago          141MB
+ibmcase/wfd-appetizer   spring              21615408fe2e        2 days ago          141MB
+openjdk                 8-alpine            a2a00e606b82        9 days ago          101MB
+```
 
 ### Running the application.
 

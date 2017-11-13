@@ -63,7 +63,7 @@ user     22603   0.0  8.3  8444016 1389764 s001  SN   11:29am   0:47.31 /usr/bin
 user     22592   0.0  6.3  8445004 1057508 s001  SN   11:27am   0:43.79 /usr/bin/java -jar target/wfd-appetizer-0.0.1-SNAPSHOT.jar
 ```
 
-2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<PORT>/<ENDPOINT>` (you can read how to find out the value for these variables on the main readme in the GitHub repository for each of the microservice **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for each of the microservices, these urls should be:
+2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<MICROSERVICE_PORT>/<MICROSERVICE_ENDPOINT>` (you can read more on each microservice's port and endpoints in their own GitHub repositories. The list of microservices can on the main readme clicking [here](#project-component-repositories)). If you have not modified the default values for each of the microservices, these urls should be:
 
 ```
 http://localhost:8081/appetizers
@@ -85,7 +85,7 @@ and what we should see in your browser is:
 In order to run the Menu microservice, execute:
 
 1. `cd refarch-cloudnative-wfd-menu`
-2. `java -Dwfd.menu.appetizers.url=http://localhost:8081/appetizers -Dwfd.menu.entrees.url=http://localhost:8082/entrees -Dwfd.menu.desserts.url=http://localhost:8083/desserts -jar target/JAR_FILE > /dev/null &` where
+2. ```java -Dwfd.menu.appetizers.url=http://localhost:8081/appetizers -Dwfd.menu.entrees.url=http://localhost:8082/entrees -Dwfd.menu.desserts.url=http://localhost:8083/desserts -jar target/JAR_FILE > /dev/null &``` where
    - _-`Dwfd.menu.<MICROSERVICE>.url=localhost:<MICROSERVICE_PORT>/<MICROSERVICE_ENDPOINT>` provides the location of the MICROSERVICE appetizer, entree and dessert to be used during any REST call to the menu microservice_
    - _`JAR_FILE` is the build outcome (wfd-menu-0.0.1-SNAPSHOT.jar most likely)_
    - _`> /dev/null` redirects the Tomcat server output so that our screen does not get filled_
@@ -104,7 +104,7 @@ $ ps aux | grep wfd-menu
 user     23007 319.0  4.6  8385484 775020 s001  RN   11:50am   0:24.49 /usr/bin/java -Dwfd.menu.appetizers.url=http://localhost:8081/appetizers -Dwfd.menu.entrees.url=http://localhost:8082/entrees -Dwfd.menu.desserts.url=http://localhost:8083/desserts -jar target/wfd-menu-0.0.1-SNAPSHOT.jar
 ```
 
-2. Ensure the Menu microservice is functioning by poking its rest service. In order to do that, we will point our web browser to `http://localhost:<MENU_PORT>/<MENU_ENDPOINT>` (you can read how to find out the value for these variables on the main readme in the Menu microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu microservice, the url should be:
+2. Ensure the Menu microservice is functioning by poking its rest service. In order to do that, we will point our web browser to `http://localhost:<MENU_MICROSERVICE_PORT>/<MENU_MICROSERVICE_ENDPOINT>` (you can read more on each microservice's port and endpoints in their own GitHub repositories. The list of microservices can on the main readme clicking [here](#project-component-repositories)). If you have not modified the default values for the Menu microservice, the url should be:
 
 ```
 http://localhost:8180/menu
@@ -141,7 +141,7 @@ $ ps aux | grep wfd-ui
 user     23053   0.0  8.6  8452852 1447380 s001  SN   12:00pm   1:04.28 /usr/bin/java -Dwfd.menu.url=http://localhost:8180/menu -jar target/wfd-ui-0.0.1-SNAPSHOT.jar
 ```
 
-2. Ensure the Menu UI (BFF) microservice is functioning by pointing your web browser to the Web application. That is, point your browser to `http://localhost:<MENU_PORT>` (you can read how to find out the value for these variables on the main readme in the Menu UI microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu UI microservice, the url should be:
+2. Ensure the Menu UI (BFF) microservice is functioning by pointing your web browser to the Web application. That is, point your browser to `http://localhost:<MENU_UI_MICROSERVICE_PORT>` you can read more on each microservice's port and endpoints in their own GitHub repositories. The list of microservices can on the main readme clicking [here](#project-component-repositories)). If you have not modified the default values for the Menu UI microservice, the url should be:
 
 ```
 http://localhost:8181
