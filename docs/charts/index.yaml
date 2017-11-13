@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   wfd-app:
   - apiVersion: v1
-    created: 2017-11-13T18:11:10.599708962+01:00
+    created: 2017-11-13T18:13:15.302603049+01:00
     description: What's For Dinner application
-    digest: c88553e9255edb1f61a7f95e8c176055c08e4d1361042474339e8e71d767a384
+    digest: 5169b7998634905d782edd8ac15a1a65c2466d4c0c7092263025d1e66c4b32cf
     name: wfd-app
     urls:
     - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring/docs/charts/wfd-app-0.1.0.tgz
@@ -12,7 +12,7 @@ entries:
   wfd-appetizer:
   - apiVersion: v1
     appVersion: Spring-v1
-    created: 2017-11-13T18:11:10.600292651+01:00
+    created: 2017-11-13T18:13:15.303228271+01:00
     description: A Helm chart for the Spring version of the appetizer microservice
       of the What's For Dinner application
     digest: 3d08471647d64bc4685161d670f4d8198589ebdab421581f52826ed56c3e3d75
@@ -23,7 +23,7 @@ entries:
   wfd-dessert:
   - apiVersion: v1
     appVersion: Spring-v1
-    created: 2017-11-13T18:11:10.600984265+01:00
+    created: 2017-11-13T18:13:15.303744743+01:00
     description: A Helm chart for the Spring version of the dessert microservice of
       the What's For Dinner application
     digest: f5ae0d08f1f414727d2391b4d0f2ab8c175e868e7bb0b0817b311f09cc05f772
@@ -34,7 +34,7 @@ entries:
   wfd-entree:
   - apiVersion: v1
     appVersion: Spring-v1
-    created: 2017-11-13T18:11:10.601667327+01:00
+    created: 2017-11-13T18:13:15.304431478+01:00
     description: A Helm chart for the Spring version of the entree microservice of
       the What's For Dinner application
     digest: 41d5ecfa403b86e18b7866cc6535b05ee6047fcbbd948ac9d676f51e2bd9913d
@@ -45,7 +45,7 @@ entries:
   wfd-menu:
   - apiVersion: v1
     appVersion: Spring-v1
-    created: 2017-11-13T18:11:10.602275939+01:00
+    created: 2017-11-13T18:13:15.305171731+01:00
     description: A Helm chart for the Spring version of the menu microservice of the
       What's For Dinner application
     digest: 604cae0b4dffe1a2d62d9bdc43e11dbd4cffef5844e304c3d3f650ee311dc488
@@ -56,7 +56,7 @@ entries:
   wfd-ui:
   - apiVersion: v1
     appVersion: Spring-v1
-    created: 2017-11-13T18:11:10.602489362+01:00
+    created: 2017-11-13T18:13:15.305790356+01:00
     description: A Helm chart for the Spring version of the menu ui microservice of
       the What's For Dinner application
     digest: e22fe1ac4136ae1638395c10a469f5896cfc00908f72014c3eae6ed7afedc46b
@@ -64,4 +64,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring/docs/charts/wfd-ui-1.0.0.tgz
     version: 1.0.0
-generated: 2017-11-13T18:11:10.597513022+01:00
+generated: 2017-11-13T18:13:15.30177392+01:00
