@@ -1,0 +1,4 @@
+apiVersion: v1
+description: What's For Dinner application
+name: wfd-app
+version: 0.1.0
