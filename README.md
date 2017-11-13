@@ -104,7 +104,7 @@ Checking out files: 100% (27735/27735), done.
 
 #### Build code
 
-We are using [Apache Maven](https://maven.apache.org/) for managing the build process of our application, which is is made up of a build process for each of the microservices that compose the What's For Dinner application. Therefore, in order to build the application (and their Docker images!) you just need to execute:
+We are using [Apache Maven](https://maven.apache.org/) for managing the build processes for each of the microservices making up the What's For Dinner application as well as the overall/project build process for building the entire application altogether at once. Therefore, in order to **build the source code (and their Docker images!)** for each of the microservices making up the What's For Dinner application you just need to execute:
 
 `mvn clean package`
 
