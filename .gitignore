@@ -1,2 +1,6 @@
 *.tmp
 *.DS_Store
+
+# Repo specific
+wfd-app/charts
+wfd-app/requirements.lock
