@@ -1,6 +1,8 @@
 # IBM Cloud Architecture - Microservices Reference Application
 
-This repository contains a microservice-based reference application called **What's For Dinner** which leverages the [**Java MicroProfile**](https://microprofile.io/) and [**Spring Boot**](https://projects.spring.io/spring-boot/) technologies for its microservices/components, the [**Netflix OSS**](https://netflix.github.io/) stack as the microservices framework and a [**Kubernetes-based**](https://kubernetes.io/) platform as the environment to run on.
+This repository contains a microservice-based reference application called **What's For Dinner** which leverages the [**Java MicroProfile**](https://microprofile.io/) and [**Spring Boot**](https://projects.spring.io/spring-boot/) technologies for its microservices/components. We also leverage [**Spring Cloud Netflix**](https://cloud.spring.io/spring-cloud-netflix/) to integrate a [**Spring Cloud**](http://projects.spring.io/spring-cloud/) version of the application with the [**Netflix OSS**](https://netflix.github.io/) stack.
+
+The target cloud environment for the application is a [**Kubernetes-based**](https://kubernetes.io/) platform which might be [**Minikube**](https://kubernetes.io/docs/getting-started-guides/minikube/) for development stages and [**IBM Cloud**](https://www.ibm.com/cloud/) or [**IBM Cloud Private**](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production stages.
 
 ## Architecture
 
@@ -30,7 +32,7 @@ The end-to-end flow of the application would be:
 
 ## Implementation
 
-The What's For Dinner microservices-based reference application has been implemented using two of the most popular technologies used for microservices development these days: [**Spring Boot**](https://projects.spring.io/spring-boot/) and the [**Java MicroProfile**](https://microprofile.io/). In this two implementations, we have used the [**Netfix OSS**](https://netflix.github.io/) stack to create a microservices eco-system. To know more about these two implementations, how they look inside out and more click on the images below:
+The What's For Dinner microservices-based reference application has been implemented using two of the most popular technologies used for microservices development these days: [**Spring Boot**](https://projects.spring.io/spring-boot/) and the [**Java MicroProfile**](https://microprofile.io/). Moreover, we have leveraged [**Spring Cloud Netflix**](https://cloud.spring.io/spring-cloud-netflix/) for integrating a [**Spring Cloud**](http://projects.spring.io/spring-cloud/) version of the application with the [**Netfix OSS**](https://netflix.github.io/) stack for microservices. To know more about these implementations, how they look inside out and more click on the images below:
 
 <p align="center">
   <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/microprofile">
@@ -40,11 +42,20 @@ The What's For Dinner microservices-based reference application has been impleme
   <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/spring">
     <img src="static/imgs/spring_small.png">
   </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/tree/spring-cloud">
+    <img src="static/imgs/spring-cloud-netflix.png">
+  </a>
 </p>
 
 ## External links
 
 - [Java MicroProfile](https://microprofile.io/)
 - [Spring Boot](https://projects.spring.io/spring-boot/)
+- [Spring Cloud](http://projects.spring.io/spring-cloud/)
 - [Netflix OSS](https://netflix.github.io/)
+- [Spring Cloud Netflix](https://cloud.spring.io/spring-cloud-netflix/)
 - [Kubernetes](https://kubernetes.io/)
+- [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/)
+- [IBM Cloud](https://www.ibm.com/cloud/)
+- [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/)
