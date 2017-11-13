@@ -278,7 +278,24 @@ For instance,
 
       ```
       NAME      CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
-      wfdui     10.0.0.135   <nodes>       3000:31744/TCP   1m
+      wfdui     10.0.0.135   <nodes>       3000:30473/TCP   1m
       ```
 
-      You will be able to access the service at `http://192.168.99.100:31744/`
+      You will be able to access the service at `http://192.168.99.100:30473/`
+
+      <p align="center">
+        <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui_minikube.png">
+      </p>
+
+## Stopping the application
+
+To stop the minikube, run this command.
+
+`minikube stop`
+
+You will see the message like below if done successfully.
+
+```
+Stopping local Kubernetes cluster...
+Machine stopped.
+```
