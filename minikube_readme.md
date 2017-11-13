@@ -110,3 +110,175 @@ If it is available, you can see the below message.
 NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 fabric-zipkin   1         1         1            1           46s
 ```
+## Running the application
+
+1. To get the application code, please complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
+
+If you do so, by the end you will have the following directory structure.
+
+```
+refarch-cloudnative-wfd/
+refarch-cloudnative-wfd-appetizer/
+refarch-cloudnative-wfd-dessert/
+refarch-cloudnative-wfd-entree/
+refarch-cloudnative-wfd-menu/
+refarch-cloudnative-wfd-ui/
+```
+
+2. For the following repositories
+
+```
+refarch-cloudnative-wfd-appetizer/
+refarch-cloudnative-wfd-dessert/
+refarch-cloudnative-wfd-entree/
+refarch-cloudnative-wfd-menu/
+```
+
+Do `mvn install`
+
+3. For your information, the below repositories
+
+```
+refarch-cloudnative-wfd-appetizer/
+refarch-cloudnative-wfd-dessert/
+refarch-cloudnative-wfd-entree/
+refarch-cloudnative-wfd-menu/
+refarch-cloudnative-wfd-ui/
+```
+
+All of them are enabled using IBM Cloud Developer Tools CLI. By using `bx dev enable`, based upon your language, it generates and adds files that can be used for local Docker containers, or Kubernetes/Container Deployment etc. You can nicely make use of those templates and customize the files based upon your information.
+
+4. `docker build -t [name] .` in each of the following repositories,
+
+```
+refarch-cloudnative-wfd-appetizer/
+refarch-cloudnative-wfd-dessert/
+refarch-cloudnative-wfd-entree/
+refarch-cloudnative-wfd-menu/
+refarch-cloudnative-wfd-ui/
+```
+
+where [name] is the image name given in the Chart.yaml file found in the relevant `chart` directory for the project. For reference, the the docker build commands will be as follows.
+
+```
+- docker build -t wfdappetizer:v1.0.0 .
+- docker build -t wfddessert:v1.0.0 .
+- docker build -t wfdentree:v1.0.0 .
+- docker build -t wfdmenu:v1.0.0 .
+- docker build -t wfdui:v1.0.0 .
+```
+
+5. Deploy each microservice with the following helm install command.
+   * refarch-cloudnative-wfd-appetizer  :    `helm install --name=wfdappetizer chart/wfdappetizer`
+   * refarch-cloudnative-wfd-dessert    :    `helm install --name=wfddessert chart/wfddessert`
+   * refarch-cloudnative-wfd-entree     :    `helm install --name=wfdentree chart/wfdentree`
+   * refarch-cloudnative-wfd-menu       :    `helm install --name=wfdmenu chart/wfdmenu`
+   * refarch-cloudnative-wfd-ui         :    `helm install --name=wfdui chart/wfdui`
+
+6. Wait till all your deployments are ready.
+
+7. Get the IP.
+
+`minikube ip`
+
+You will see something like below.
+
+```
+192.168.99.100
+```
+
+8. Use `kubectl get service [service name]` to get the port.
+   * refarch-cloudnative-wfd-appetizer  :    `kubectl get service wfdappetizer-service`
+   * refarch-cloudnative-wfd-dessert    :    `kubectl get service wfddessert-service`
+   * refarch-cloudnative-wfd-entree     :    `kubectl get service wfdentree-service`
+   * refarch-cloudnative-wfd-menu       :    `kubectl get service wfdmenu-service`
+   * refarch-cloudnative-wfd-ui         :    `kubectl get service wfdui`
+
+9. Grab the port and you should be able to access them at `http://<ip>:<port>/<path>/<endpoint>`.
+
+For instance,
+
+   1. **refarch-cloudnative-wfd-appetizer**
+
+      `minikube ip`
+
+      ```
+      192.168.99.100
+      ```
+
+      `kubectl get service wfdappetizer-service`
+
+      ```
+      NAME                   CLUSTER-IP   EXTERNAL-IP   PORT(S)                         AGE
+      wfdappetizer-service   10.0.0.16    <nodes>       9080:30073/TCP,9443:30860/TCP   4m
+      ```
+
+      You will be able to access the service at `http://192.168.99.100:30073/WfdAppetizer/rest/appetizer`
+
+   2. **refarch-cloudnative-wfd-dessert**
+
+      `minikube ip`
+
+      ```
+      192.168.99.100
+      ```
+
+      `kubectl get service wfddessert-service`
+
+      ```
+      NAME                 CLUSTER-IP   EXTERNAL-IP   PORT(S)                         AGE
+      wfddessert-service   10.0.0.31    <nodes>       9080:31352/TCP,9443:31477/TCP   1m
+      ```
+
+      You will be able to access the service at `http://192.168.99.100:31352/WfdDessert/rest/dessert`
+
+   3. **refarch-cloudnative-wfd-entree**
+
+      `minikube ip`
+
+      ```
+      192.168.99.100
+      ```
+
+      `kubectl get service wfdentree-service`
+
+      ```
+      NAME                CLUSTER-IP   EXTERNAL-IP   PORT(S)                         AGE
+      wfdentree-service   10.0.0.180   <nodes>       9080:32021/TCP,9443:30753/TCP   2m
+      ```
+
+      You will be able to access the service at `http://192.168.99.100:32021/WfdEntree/rest/entree`
+
+   4. **refarch-cloudnative-wfd-menu**
+
+      `minikube ip`
+
+      ```
+      192.168.99.100
+      ```
+
+      `kubectl get service wfdmenu-service`
+
+      ```
+      NAME              CLUSTER-IP   EXTERNAL-IP   PORT(S)                         AGE
+      wfdmenu-service   10.0.0.129   <nodes>       9080:31701/TCP,9443:32338/TCP   1m
+      ```
+
+      You will be able to access the service at `http://192.168.99.100:31701/WfdMenu/rest/menu`
+
+   5. **refarch-cloudnative-wfd-ui**
+
+      `minikube ip`
+
+      ```
+      192.168.99.100
+      ```
+
+      `kubectl get service wfdui`
+
+      ```
+      NAME      CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+      wfdui     10.0.0.135   <nodes>       3000:31744/TCP   1m
+      ```
+
+      You will be able to access the service at `http://192.168.99.100:31744/`
