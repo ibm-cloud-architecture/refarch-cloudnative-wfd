@@ -1,4 +1,5 @@
 # Run the What's For Dinner application locally - Spring
+
 The aim of this readme is to show the reader how you can run the Spring version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Tomcat server.
 
 This is one of the deployment models for the What's For Dinner application you can find outlined in the main [README](README.md#running-the-application).
@@ -63,7 +64,7 @@ user     22603   0.0  8.3  8444016 1389764 s001  SN   11:29am   0:47.31 /usr/bin
 user     22592   0.0  6.3  8445004 1057508 s001  SN   11:27am   0:43.79 /usr/bin/java -jar target/wfd-appetizer-0.0.1-SNAPSHOT.jar
 ```
 
-2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<MICROSERVICE_PORT>/<MICROSERVICE_ENDPOINT>` (you can read more on each microservice's port and endpoints in their own GitHub repositories. The list of microservices can on the main readme clicking [here](#project-component-repositories)). If you have not modified the default values for each of the microservices, these urls should be:
+2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<MICROSERVICE_PORT>/<MICROSERVICE_ENDPOINT>` (you can read more on each microservice's port and endpoints in their own GitHub repositories. The list of microservices can on the main readme clicking [here](README.md#project-component-repositories)). If you have not modified the default values for each of the microservices, these urls should be:
 
 ```
 http://localhost:8081/appetizers
