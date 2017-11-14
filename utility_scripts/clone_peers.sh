@@ -18,7 +18,7 @@ if [ ${?} -ne 0 ]; then
 fi
 
 #Optional overrides to allow for specific default branches to be used.
-DEFAULT_BRANCH=${1:-spring}
+DEFAULT_BRANCH=${1:-spring-cloud}
 
 #IBM Cloud Architecture GitHub Repository.
 GITHUB_ORG=${CUSTOM_GITHUB_ORG:-ibm-cloud-architecture}
