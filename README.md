@@ -117,4 +117,4 @@ As mentioned at the beginning of this section, there are several forms and shape
 1. Run application **locally**. Click [**here**](local_readme.md) for instructions.
 2. Run application in **Docker containers locally**. Click [**here**](local_docker_readme.md) for instructions.
 3. Run application on a local **minikube environment**. Click [**here**](minikube_readme.md) for instructions.
-4. Run application on **ICP/BMX**.
+4. Run application on **ICP/BMX**. Click [**here**](ICP.md) for instructions.
