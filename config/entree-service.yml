@@ -1,0 +1,17 @@
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+server:
+  port: 8082
+
+wfd:
+  entree:
+    order: 2
+    type: dinner
+    menu:
+      - Steak
+      - Chicken
+      - Fish
+      - Burger

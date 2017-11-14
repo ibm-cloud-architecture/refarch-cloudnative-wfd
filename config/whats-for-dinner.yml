@@ -1,0 +1,6 @@
+server:
+  port: 8181
+
+wfd:
+  menu:
+    url: http://menu-service/menu

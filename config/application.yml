@@ -1,0 +1,13 @@
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    baseUrl: http://wfd-spring-zipkin-server:9411
+
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://wfd-spring-spring-eureka-server:8761/eureka/
+  instance:
+    preferIpAddress: true

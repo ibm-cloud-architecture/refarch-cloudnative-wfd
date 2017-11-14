@@ -1,0 +1,16 @@
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+server:
+  port: 8083
+
+wfd:
+  dessert:
+    order: 3
+    type: dessert
+    menu:
+      - Chocolate Cake
+      - Banoffee
+      - Ice Cream
+      - Grapes

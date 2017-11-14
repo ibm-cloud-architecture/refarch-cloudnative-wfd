@@ -1,0 +1,16 @@
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+server:
+  port: 8180
+
+wfd:
+  menu:
+    appetizers:
+      url: http://appetizer-service/appetizers
+    entrees:
+      url: http://entree-service/entrees
+    desserts:
+      url: http://dessert-service/desserts
