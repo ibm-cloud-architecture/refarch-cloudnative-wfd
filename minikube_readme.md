@@ -5,6 +5,7 @@ The aim of this readme is to show the reader how you can run the Spring version 
 1. [Pre-requisites](#pre-requisites)
 2. [Deploy the application](#deploy-the-application)
 3. [Validate the application](#validate-the-application)
+4. [Delete the application](#delete-the-application)
 
 ## Pre-requisites
 
@@ -186,3 +187,28 @@ Finally, point your browser to `http://<MINIKUBE_IP/whats-for-dinner>` and you s
 ![Application](static/imgs/minikube_readme/application.png?raw=true)
 
 where _`<MINIKUBE_IP>`_ can be obtained by executing `minikube ip`
+
+## Delete the application
+
+In order to delete the What's For Dinner application from your Kubernetes cluster on your Minikube environment execute:
+
+```
+$ helm delete <RELEASE_NAME> --purge
+```
+
+where _`<RELEASE_NAME>`_ is the unique identifier you used for installing the application.
+
+You should see the following output:
+
+```
+$ helm delete wfd-demo --purge
+release "wfd-demo" deleted
+```
+
+If we now execute `kubectl get all`, we should see no resources on our Kubernetes cluster default namespace:
+
+```
+$ kubectl get all
+NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+svc/kubernetes   10.0.0.1     <none>        443/TCP   6d
+```
