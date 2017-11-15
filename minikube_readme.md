@@ -63,7 +63,7 @@ If added, you will see the below message.
 
 `helm install --name fabric ibm-charts/ibm-microservicebuilder-fabric`
 
-If you see something like the below message, your tiller version is not compatible.T
+If you see something like the below message, your tiller version is not compatible.
 
 ```
 Error: Chart incompatible with Tiller v2.4.2
@@ -112,7 +112,7 @@ fabric-zipkin   1         1         1            1          
 ```
 ## Running the application
 
-1. To get the application code, please complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of this What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
+1. To get the application code, please complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
 
 If you do so, by the end you will have the following directory structure.
 
