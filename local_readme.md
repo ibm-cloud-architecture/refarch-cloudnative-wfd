@@ -1,6 +1,6 @@
 # Run the What's For Dinner application locally - MicroProfile
 
-The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on you laptop. We will first run each of the application's components locally on their own Liberty server.
+The aim of this readme is to show the reader how you can run the Java MicrProfile version of the What's For Dinner application locally on your laptop. We will first run each of the application's components locally on their own Liberty server.
 
 This is one of the deployment models for the What's For Dinner application you can find outlined in the main [README](README.md#running-the-application).
 
@@ -37,10 +37,25 @@ refarch-cloudnative-wfd-ui/
 We will start by running the microservices at the bottom of the application architecture which are the **appetizer, dessert and entree** microservices. In order to run these, you need to execute the following for **each of the mentioned microservices**:
 
 1. `cd refarch-cloudnative-wfd-<microservice>`
-2. `mvn liberty:start-server`<sup>*</sup>
-3. `cd ..`
 
-<sup>*</sup> After running this command, you should see a similar output to this:
+2. Since you are running them locally, all the services should run on different ports.
+
+   By default, in each of the microservices, if you access pom.xml, you will see the default port as 9080.
+
+   `<testServerHttpPort>9080</testServerHttpPort>`
+
+3. For `refarch-cloudnative-wfd-appetizer/`
+   - Run `mvn liberty:start-server -DtestServerHttpPort=9081`
+
+   For `refarch-cloudnative-wfd-entree/`
+   - Run `mvn liberty:start-server -DtestServerHttpPort=9082`
+
+   For `refarch-cloudnative-wfd-dessert/`
+   - Run `mvn liberty:start-server -DtestServerHttpPort=9083`
+
+4. `cd ..`
+
+After running this command, you should see a similar output to this:
 ```
 $ mvn liberty:start-server
 [INFO] Scanning for projects...
@@ -90,7 +105,36 @@ user     36873   0.0  2.3  8393380 378212 s001  S     4:34pm   0:15.40 /Library/
 user     36783   0.0  2.1  8374736 359356 s001  S     4:33pm   0:14.25 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java -javaagent:/Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-entree/target/liberty/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -XX:MaxPermSize=256m -jar /Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-entree/target/liberty/wlp/bin/tools/ws-server.jar defaultServer
 ```
 
-2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<PORT>/<WAR_CONTEXT>/<APPLICATION_PATH>/<ENDPOINT>` (you can read how to find out the value for these variables on the main readme in the GitHub repository for each of the microserice **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for each of the microservices, these urls should be:
+2. Ensure the microservices are functioning by poking their rest service. In order to do that, we will point our web browser to `http://localhost:<PORT>/<WAR_CONTEXT>/<APPLICATION_PATH>/<ENDPOINT>`
+
+Access POM in each of your microservice repositories.
+
+- `refarch-cloudnative-wfd-appetizer/` - [pom.xml](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer/blob/microprofile/pom.xml)
+- `refarch-cloudnative-wfd-dessert/`   -     [pom.xml](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert/tree/microprofile)
+- `refarch-cloudnative-wfd-entree/`    -     [pom.xml](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree/blob/microprofile/pom.xml)
+
+In our sample application, you can get the details of the above URL as follows.
+
+- Since, we are running the application locally on our system, the **HOST** will be `localhost`.
+- You can get the **PORT** and **WAR_CONTEXT** from the `<properties> </properties>` section of respective POMs.
+
+```
+<app.name>APPLICATION_NAME</app.name>
+<testServerHttpPort>PORT_HTTP</testServerHttpPort>
+<testServerHttpsPort>PORT_HTTPS</testServerHttpsPort>
+<warContext>${app.name}</warContext>
+```
+So, **PORT** will be `PORT_HTTP` (since we are over-writing the same, it depends upon the value you pass) and **WAR_CONTEXT** will be `APPLICATION_NAME`.
+
+In our sample applications, `<APPLICATION_PATH>` is `/rest` and corresponding endpoints for respective microservices are as follows.
+
+```
+refarch-cloudnative-wfd-appetizer/  -   /appetizer
+refarch-cloudnative-wfd-dessert/    -   /dessert
+refarch-cloudnative-wfd-entree/     -   /entree
+```
+
+If you have passed the above values of ports for each of the microservices as mentioned earlier, these urls should be
 
 ```
 http://localhost:9081/WfdAppetizer/rest/appetizer
@@ -112,10 +156,26 @@ and what we should see in your browser is:
 In order to run the Menu microservice, execute:
 
 1. `cd refarch-cloudnative-wfd-menu`
-2. `mvn liberty:start-server`<sup>*</sup>
-3. `cd ..`
 
-<sup>*</sup> You should see a similar output to the output when running any of the previous microservices.
+2. Since you are running them locally, all the services should run on different ports.
+
+   By default, in each of the microservices, if you access pom.xml, you will see the default port as 9080.
+
+   `<testServerHttpPort>9080</testServerHttpPort>`
+
+3. Set the following environment variables.
+
+   ```
+   export appetizer_url=http://localhost:9081/WfdAppetizer/rest/appetizer
+   export entree_url=http://localhost:9082/WfdEntree/rest/entree
+   export dessert_url=http://localhost:9083/WfdDessert/rest/dessert
+   ```
+
+4. `mvn liberty:start-server -DtestServerHttpPort=9180`
+
+5. `cd ..`
+
+You should see a similar output to the output when running any of the previous microservices.
 
 #### Validate
 
@@ -128,7 +188,32 @@ $ ps aux | grep wfd-menu
 user     37880   0.2  2.2  8393228 366764 s001  S     5:42pm   0:15.26 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java -javaagent:/Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-menu/target/liberty/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -XX:MaxPermSize=256m -jar /Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-menu/target/liberty/wlp/bin/tools/ws-server.jar defaultServer
 ```
 
-2. Ensure the Menu microservice is functioning by poking its rest service. In order to do that, we will point our web browser to `http://localhost:<MENU_PORT>/<MENU_WAR_CONTEXT>/<MENU_APPLICATION_PATH>/<MENU_ENDPOINT>` (you can read how to find out the value for these variables on the main readme in the Menu microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu microservice, the url should be:
+2. Ensure the Menu microservice is functioning by poking its rest service. In order to do that, we will point our web browser to `http://localhost:<MENU_PORT>/<MENU_WAR_CONTEXT>/<MENU_APPLICATION_PATH>/<MENU_ENDPOINT>`
+
+Access POM your microservice repository.
+
+- refarch-cloudnative-wfd-menu/      - [pom.xml](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu/blob/microprofile/pom.xml)
+
+In our sample application, you can get the details of the above URL as follows.
+
+- Since, we are running the application locally on our system, the **HOST** will be `localhost`.
+- You can get the **PORT** and **WAR_CONTEXT** from the `<properties> </properties>` section of respective POMs.
+
+```
+<app.name>APPLICATION_NAME</app.name>
+<testServerHttpPort>PORT_HTTP</testServerHttpPort>
+<testServerHttpsPort>PORT_HTTPS</testServerHttpsPort>
+<warContext>${app.name}</warContext>
+```
+So, **PORT** will be `PORT_HTTP` (since we are over-writing the same, it depends upon the value you pass) and **WAR_CONTEXT** will be `APPLICATION_NAME`.
+
+In our sample applications, `<APPLICATION_PATH>` is `/rest` and corresponding endpoint is as follows.
+
+```
+refarch-cloudnative-wfd-menu/   -   /menu
+```
+
+If you have passed the above value of port for the microservice as mentioned earlier, the url should be:
 
 ```
 http://localhost:9180/WfdMenu/rest/menu
@@ -146,36 +231,37 @@ and what we should see in your browser is:
 In order to run the Menu UI microservice, execute:
 
 1. `cd refarch-cloudnative-wfd-ui`
-2. `mvn liberty:start-server`<sup>*</sup>
-3. `cd ..`
 
-<sup>*</sup> You should see a similar output to the output when running any of the previous microservices.
+Access [.env](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-ui/blob/microprofile/.env) file of your microservice repository.
+
+Modify `WFD_MENU_URL="http://localhost:9180/WfdMenu/rest/menu"`
+
+2. `npm start`<sup>*</sup>
+
+<sup>*</sup> It starts serving your application.
 
 #### Validate
 
 To validate our Menu UI microservice is running fine, we will:
 
-1. Ensure its Liberty server is running by executing the command `ps aux | grep wfd-ui`. We should be able to find the Liberty server running the Menu microservice:
+1. Ensure the Menu UI (BFF) microservice is functioning by pointing your web browser to the Web application. That is, point your browser to `http://localhost:<PORT>/`
+
+By default, the port for this microservice is 3000.
+
+You can also change the port if you want by adding `PORT=<your desired port>` to [.env](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-ui/blob/microprofile/.env) file.
 
 ```
-$ ps aux | grep wfd-ui
-user     38040   0.0  2.2  8383132 372232 s001  S     5:55pm   0:13.47 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java -javaagent:/Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-ui/target/liberty/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -XX:MaxPermSize=256m -jar /Users/user/Workspace/GitHub/CASE/refarch-cloudnative-wfd-ui/target/liberty/wlp/bin/tools/ws-server.jar defaultServer
-```
-
-2. Ensure the Menu UI (BFF) microservice is functioning by pointing your web browser to the Web application. That is, point your browser to `http://localhost:<MENU_PORT>/<MENU_WAR_CONTEXT>` (you can read how to find out the value for these variables on the main readme in the Menu UI microservice GitHub repository **\<PLACEHOLDER HEMANKITA>**). If you have not modified the default values for the Menu UI microservice, the url should be:
-
-```
-http://localhost:9080/WfdFrontEnd
+http://localhost:3000/
 ```
 and what we should see in your browser is:
 
 ![UI](static/imgs/local_readme/ui.png)
 
-**IMPORTANT:** If your What's For Dinner application does not show any dish, please make sure you have disabled Cross-Origin Restrictions (CORs) on your web browser (Click [here](http://ui-coder.blogspot.com.es/2015/08/how-to-disable-in-chrome-mozilla.html) to learn how to do so). If after disabling the CORs you still do not see dishes on the menu displayed on your browser, plase make sure all the What's For Dinner application's microservices are up and running.
-
 ## Stop raw application
 
 In order to not consume resources on our laptop and also in case we wanted to run the What's For Dinner application in any of its other [deployment options](README.md#running-the-application), you **must stop each of the What's For Dinner application's microservices** and hence each of the Liberty server instances by executing:
+
+Except for **refarch-cloudnative-wfd-ui**, you can stop the rest of the services in the following way.
 
 1. `cd refarch-cloudnative-wfd-<microservice>`
 2. `mvn liberty:stop-server`<sup>*</sup>
@@ -212,6 +298,8 @@ $ mvn liberty:stop-server
 [INFO] ------------------------------------------------------------------------
 ```
 
+For **refarch-cloudnative-wfd-ui**, just press Ctrl+C, if you want to stop the application.
+
 ## Automation
 
 In this section, we present two scripts for running all the Java MicroProfile What's For Dinner application's microservices at once on an automated fashion for those who do not want to go through each of the steps above manually. We also present a script for stopping all these microservices at once.
@@ -224,6 +312,8 @@ In order to **run all the What's For Dinner application's microserives**, execut
 You should see on your screen the same output you would if you manually ran each microservice individually as descibed in previous sections.
 
 Validate the What's For Dinner application is working correctly as explained on the [validate section](#validate-2) for the Menu UI microservice above.
+
+To come out of it, press `Ctrl + C`.
 
 In order to **stop all the What's For Dinner application's microservices**, execute:
 
