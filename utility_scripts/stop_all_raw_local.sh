@@ -20,17 +20,35 @@ fi
 # Stop all Java MicroProfile What's For Dinner application's microservices
 for REPO in ${REQUIRED_REPOS[@]}; do
   MICRO=$(echo ${REPO} | sed -e 's/^.*refarch-cloudnative-wfd-//g')
-  echo -e "\nStoping the ${GREEN}${MICRO}${NC} microservice"
+  echo -e "\nStopping the ${GREEN}${MICRO}${NC} microservice"
 
   cd ../../${REPO}
 
-  mvn liberty:stop-server
+  case ${MICRO} in
+    appetizer)
+                mvn liberty:stop-server
+                check
+                ;;
+    entree)
+                mvn liberty:stop-server
+                check
+                ;;
+    dessert)
+                mvn liberty:stop-server
+                check
+                ;;
+    menu)
+                mvn liberty:stop-server
+                check
+                ;;
 
-  if [ $? -ne 0 ]; then
-      echo -e "${RED}${REPO} failed to stop microservice ${MICRO}${NC}"
-      exit 1
-  else
-    echo -e "${GREEN}DONE${NC}"
-  fi
+    *)
+                echo -e "${RED}${MICRO} is already stopped ${MICRO}${NC}"
+                exit 1
+
+  esac
+
+  echo -e "${GREEN}DONE${NC}"
+
   cd ${SCRIPTDIR}
 done
