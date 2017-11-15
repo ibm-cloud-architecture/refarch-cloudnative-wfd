@@ -1,4 +1,5 @@
 #!/bin/bash
+export WFD_MENU_URL="http://localhost:9180/WfdMenu/rest/menu"
 check(){
   if [ $? -ne 0 ]; then
     echo -e "${RED}${REPO} failed to start microservice ${MICRO}${NC}"
@@ -51,7 +52,7 @@ for REPO in ${REQUIRED_REPOS[@]}; do
                 check
                 ;;
     ui)
-                mvn liberty:start-server
+                npm start
                 check
                 ;;
     *)
