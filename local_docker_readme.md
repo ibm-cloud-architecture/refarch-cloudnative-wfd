@@ -121,7 +121,7 @@ As a result, when any microservice makes a rest call to any service, this will b
    ```
 
 4. `docker-compose logs --follow` _(Displays log output from services)_.
-5. Access the application via `http://localhost/WfdFrontEnd`
+5. Access the application via `http://localhost:3000/`
 
 ![Application](static/imgs/docker_local_readme/app.png)
 
