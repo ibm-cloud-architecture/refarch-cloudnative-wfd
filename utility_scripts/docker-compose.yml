@@ -6,7 +6,9 @@ services:
    depends_on:
     - menu
    ports:
-    - "80:9080"
+    - "3000:3000"
+   env_file:
+    - wfd.env
 
   menu:
    build: ../../refarch-cloudnative-wfd-menu
