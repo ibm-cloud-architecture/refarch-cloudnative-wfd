@@ -12,7 +12,7 @@ Microservice builder has an option to deploy with IBM Cloud Private. You can set
 ## Pre-requisites
 
 1. Install [Git](https://git-scm.com/downloads) Client
-2. [IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K)
+2. [IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K). You can find the detailed installation instructions [here](https://github.com/ibm-cloud-architecture/refarch-privatecloud).
 
 ## Setting up your environment
 
