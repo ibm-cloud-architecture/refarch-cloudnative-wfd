@@ -317,5 +317,31 @@ To come out of it, press `Ctrl + C`.
 
 In order to **stop all the What's For Dinner application's microservices**, execute:
 
-1. `cd refarch-cloudnative-wfd/utility_scripts`
-2. `./stop_all_raw_local.sh`
+1. `cd refarch-cloudnative-wfd`
+2. `mvn liberty:stop-server`
+
+You should see the following output:
+
+```
+[INFO] ------------------------------------------------------------------------
+[INFO] Building project 0.1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- liberty-maven-plugin:1.2:stop-server (default-cli) @ project ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO]
+[INFO] WfdAppetizer ....................................... SUCCESS [  1.167 s]
+[INFO] WfdEntree .......................................... SUCCESS [ 38.167 s]
+[INFO] WfdDessert ......................................... SUCCESS [  0.197 s]
+[INFO] WfdMenu ............................................ SUCCESS [  0.204 s]
+[INFO] WfdUi .............................................. SUCCESS [  0.078 s]
+[INFO] project ............................................ SUCCESS [  0.003 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 40.328 s
+[INFO] Finished at: 2017-11-17T15:29:02-06:00
+[INFO] Final Memory: 10M/309M
+[INFO] ------------------------------------------------------------------------
+```
