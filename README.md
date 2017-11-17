@@ -108,7 +108,35 @@ Again, there are two ways of building the code for each of the What's For Dinner
 
 1. Manually executing `cd ../<app-component-name> && mvn install` for each of the What's For Dinner application's components (listed [here](#project-component-repositories)).
 
-2. Executing `sh build_all.sh` within the `utility_scripts` folder provided in this repository and it will build all What's For Dinner application's components for you.
+2. We are using Apache Maven for managing the build processes for each of the microservices making up the What's For Dinner application as well as the overall/project build process for building the entire application altogether at once. Therefore, in order to build the source code for each of the microservices making up the What's For Dinner application you just need to execute:
+
+`mvn clean package`
+
+You should see the following output:
+
+```
+[INFO] ------------------------------------------------------------------------
+[INFO] Building project 0.1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ project ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO]
+[INFO] WfdAppetizer ....................................... SUCCESS [  5.884 s]
+[INFO] WfdEntree .......................................... SUCCESS [  2.193 s]
+[INFO] WfdDessert ......................................... SUCCESS [  2.054 s]
+[INFO] WfdMenu ............................................ SUCCESS [  2.239 s]
+[INFO] WfdUi .............................................. SUCCESS [ 17.582 s]
+[INFO] project ............................................ SUCCESS [  0.002 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 30.289 s
+[INFO] Finished at: 2017-11-17T15:26:44-06:00
+[INFO] Final Memory: 53M/1352M
+[INFO] ------------------------------------------------------------------------
+```
 
 ### Running the application.
 
