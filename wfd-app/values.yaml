@@ -1,0 +1,45 @@
+global:
+  zipkin:
+    service: spring-stack-zipkin-server
+    port: 9411
+  eureka:
+    service: spring-stack-spring-eureka-server
+    port: 8761
+    preferIpAddress: true
+  config:
+    service: spring-stack-spring-config-server
+    port: 8888
+    branch: spring-cloud
+  rabbitmq:
+    addresses: amqp://guest:guest@rabbitmq:5672
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+
+wfd-appetizer:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+
+wfd-entree:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+
+wfd-dessert:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+
+wfd-menu:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+
+wfd-ui:
+  replicaCount: 1
+  service:
+    type: ClusterIP

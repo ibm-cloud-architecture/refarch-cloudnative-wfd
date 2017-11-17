@@ -1,0 +1,16 @@
+dependencies:
+  - name: wfd-appetizer
+    repository: https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring-cloud/docs/charts
+    version: 1.0.0
+  - name: wfd-entree
+    repository: https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring-cloud/docs/charts
+    version: 1.0.0
+  - name: wfd-dessert
+    repository: https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring-cloud/docs/charts
+    version: 1.0.0
+  - name: wfd-menu
+    repository: https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring-cloud/docs/charts
+    version: 1.0.0
+  - name: wfd-ui
+    repository: https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-wfd/spring-cloud/docs/charts
+    version: 1.0.0
