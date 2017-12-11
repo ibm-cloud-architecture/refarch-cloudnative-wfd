@@ -32,7 +32,7 @@ Kubectl is now configured to use the cluster.
 If it is successful, you will see the below output.
 
 ```
-$HELM_HOME has been configured at /Users/Hemankita.Perabathini@ibm.com/.helm.
+$HELM_HOME has been configured at /Users/user@ibm.com/.helm.
 
 Tiller (the helm server side component) has been installed into your Kubernetes Cluster.
 Happy Helming!
