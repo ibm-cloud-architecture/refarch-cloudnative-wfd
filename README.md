@@ -21,6 +21,24 @@ This repository contains the **Java MicroProfile** implementation of the microse
 - MicroProfile code highlights
 - Architecture design/flow
 
+### [Liberty app accelerator](https://liberty-app-accelerator.wasdev.developer.ibm.com/start/)
+
+Writing an application from scratch is time consuming. It needs extra effort. It is always nice to have a framework that build things automatically. Liberty App Accelerator acts as starting point to begin building the Java applications. It is hosted on IBM Bluemix and one more nice thing about this is that it supports microservices.
+
+that generates a simple project based upon your configuration. Using this, you can build and deploy to Liberty either using the Maven or Gradle build.
+
+<p align="center">
+    <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/LibertyAcc_Home.png">
+</p>
+
+Just check the options of your choice and click Generate project. You can either Download it as a zip or you can create git project.
+
+<p align="center">
+    <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/LibertyAcc_PrjGen.png">
+</p>
+
+Once you are done with this, you will have a sample microprofile based application that you can deploy on Liberty. For more details, please look into the individual microservices.
+
 ## Project Component Repositories
 
 Microservice-based architecture development best practices recommend to treat each microservice as an independent entity itself, owning its source code, its source code repository, its CI/CD pipeline, etc. Therefore, each of the individual microservices making up the What's For Dinner application will have its own GitHub repository:
