@@ -51,6 +51,13 @@ MicroProfile is an open platform that optimizes the Enterprise Java for microser
 - MicroProfile 1.1 (MicroProfile 1.0, [MicroProfile Config 1.0.](https://github.com/eclipse/microprofile-config))
 - [MicroProfile Config 1.1](https://github.com/eclipse/microprofile-config) (supercedes MicroProfile Config 1.0), [MicroProfile Fault Tolerance 1.0](https://github.com/eclipse/microprofile-fault-tolerance), [MicroProfile Health Check 1.0](https://github.com/eclipse/microprofile-health), [MicroProfile Metrics 1.0](https://github.com/eclipse/microprofile-metrics), [MicroProfile JWT Authentication 1.0](https://github.com/eclipse/microprofile-jwt-auth).
 
+**Features used in our sample application**
+
+- *Java SE 8* - Used Java Programming language
+- *CDI 1.2* - Used CDI for typesafe dependency injection
+- *JAX-RS 2.0.1* - JAX-RS is used for providing both standard client and server APIs for RESTful communication by MicroProfile applications.
+- *Eclipse MicroProfile Config 1.1* - Configuration data comes from different sources like system properties, system environment variables, .properties etc. These values may change dynamically. Using this feature, helps us to pick up configured values immediately after they got changed.
+
 ## Project Component Repositories
 
 Microservice-based architecture development best practices recommend to treat each microservice as an independent entity itself, owning its source code, its source code repository, its CI/CD pipeline, etc. Therefore, each of the individual microservices making up the What's For Dinner application will have its own GitHub repository:
