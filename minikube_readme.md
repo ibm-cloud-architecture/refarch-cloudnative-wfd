@@ -91,25 +91,6 @@ Client: &version.Version{SemVer:"v2.4.2", GitCommit:"82d8e9498d96535cc6787a6a919
 Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
 ```
 
-7. Run `helm install --name fabric ibm-charts/ibm-microservicebuilder-fabric`
-
-```
-Get the Zipkin URL by running these commands:
-  export POD_NAME=$(kubectl get pods --namespace default -l "app=fabric-zipkin" -o jsonpath="{.items[0].metadata.name}")
-  kubectl port-forward $POD_NAME 9411:9411
-  echo "Visit http://127.0.0.1:9411 to use your application"
-```
-
-8. Check if your fabric zipkin deployment is available. You can do this by running the below command.
-
-`kubectl get deployment fabric-zipkin`
-
-If it is available, you can see the below message.
-
-```
-NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-fabric-zipkin   1         1         1            1           46s
-```
 ## Running the application
 
 1. To get the application code, please complete the [pre-requisites](README.md#pre-requisites) outlined in the main [README](README.md) for the Java MicroProfile version of What's For Dinner application. In summary, you must have cloned all the application's components' GitHub repositories and built them up.
