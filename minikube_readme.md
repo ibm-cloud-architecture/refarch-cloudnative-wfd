@@ -4,10 +4,16 @@ Before deploying the application to IBM Cloud Private, you can always test your 
 
 ## Pre-requisites
 
-1. Install [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/#installation)
-2. Install [Docker](https://docs.docker.com/engine/installation/)
-3. Install [Maven](https://maven.apache.org/install.html)
-4. Install [Git](https://git-scm.com/downloads) Client
+To run the What's For Dinner application locally on your laptop on a Kubernetes-based environment such as Minikube (which is meant to be a small development environment) we first need to get few tools installed:
+
+- [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/) (Kubernetes CLI) - Follow the instructions [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to install it on your platform.
+- [Helm](https://github.com/kubernetes/helm) (Kubernetes package manager) - Follow the instructions [here](https://github.com/kubernetes/helm/blob/master/docs/install.md) to install it on your platform.
+
+Finally, we must create a Kubernetes Cluster. As already said before, we are going to use Minikube:
+
+- [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) - Create a single node virtual cluster on your workstation. Follow the instructions [here](https://kubernetes.io/docs/tasks/tools/install-minikube/) to get Minikube installed on your workstation.
+
+We not only recommend to complete the three Minikube installation steps on the link above but also read the [Running Kubernetes Locally via Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) page for getting more familiar with Minikube. We can learn there interesting things such as reusing our Docker daemon, getting the Minikube's ip or opening the Minikube's dashboard for GUI interaction with out Kubernetes Cluster.
 
 ## Setting up your environment
 
