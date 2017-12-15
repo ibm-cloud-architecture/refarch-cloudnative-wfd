@@ -58,6 +58,19 @@ MicroProfile is an open platform that optimizes the Enterprise Java for microser
 - *JAX-RS 2.0.1* - JAX-RS is used for providing both standard client and server APIs for RESTful communication by MicroProfile applications.
 - *Eclipse MicroProfile Config 1.1* - Configuration data comes from different sources like system properties, system environment variables, .properties etc. These values may change dynamically. Using this feature, helps us to pick up configured values immediately after they got changed.
 
+### DevOps strategy - [Microservice Builder](https://www.ibm.com/us-en/marketplace/microservice-builder)
+
+We opted [Microservice Builder](https://www.ibm.com/us-en/marketplace/microservice-builder) as our continuos delivery pipeline. It helps us to maintain the application end to end from development to production supporting continuous delivery. It helps us to develop and deploy microservice based applications. Using the pre-integrated Devops pipeline, developers can rapidly build innovative services and deploy them easily.
+
+Microservice Builder runs on a Jenkins pipeline. Basically Jenkins runs in a docker container and it is deployed on Kubernetes using helm.
+
+This jenkins should be integrated with the Github. The repository to which you push the code should be integrated to Microservice Builder pipeline through Github. Then only Microservice Builder will be able to pick your code.
+
+To find instructions on how to set your Microservice Builder pipeline up, click [here](https://www.ibm.com/support/knowledgecenter/en/SS5PWC/pipeline.html).
+
+For more details on how to use the Microservice Builder for individual microservices, please have a look at the MIcroService BUilder section of the individual services.
+
+
 ## Project Component Repositories
 
 Microservice-based architecture development best practices recommend to treat each microservice as an independent entity itself, owning its source code, its source code repository, its CI/CD pipeline, etc. Therefore, each of the individual microservices making up the What's For Dinner application will have its own GitHub repository:
