@@ -55,38 +55,7 @@ NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 tiller-deploy   1         1         1            1           1m
 ```
 
-4. Run the below command to add IBM helm repository
-
-`helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/`
-
-If added, you will see the below message.
-
-```
-"ibm-charts" has been added to your repositories
-```
-
-5. To install microservice builder fabric using helm, run the below command.
-
-`helm install --name fabric ibm-charts/ibm-microservicebuilder-fabric`
-
-If you see something like the below message, your tiller version is not compatible.
-
-```
-Error: Chart incompatible with Tiller v2.4.2
-```
-
-Sometimes the version of helm installed by Kubernetes package manager might not be compatible. If you are encountering a problem, please upgrade your helm tiller version to packages 2.5.0 or higher. You can do this using the below command.
-
-`helm init --upgrade --tiller-image gcr.io/kubernetes-helm/tiller:v2.5.0`
-
-If the command is successful, you will see the below message.
-
-```
-Tiller (the helm server side component) has been upgraded to the current version.
-Happy Helming!
-```
-
-6. Verify your helm version before proceeding like below.
+4. Verify your helm version before proceeding like below.
 
 `helm version`
 
@@ -162,9 +131,11 @@ where [name] is the image name given in the Chart.yaml file found in the relevan
    * refarch-cloudnative-wfd-menu       :    `helm install --name=wfdmenu chart/wfdmenu`
    * refarch-cloudnative-wfd-ui         :    `helm install --name=wfdui chart/wfdui`
 
-6. Wait till all your deployments are ready.
+## Validate the application
 
-7. Get the IP.
+Before validating the application, wait till all your deployments are ready.
+
+1. Get the IP.
 
 `minikube ip`
 
@@ -174,14 +145,14 @@ You will see something like below.
 192.168.99.100
 ```
 
-8. Use `kubectl get service [service name]` to get the port.
+2. Use `kubectl get service [service name]` to get the port.
    * refarch-cloudnative-wfd-appetizer  :    `kubectl get service wfdappetizer-service`
    * refarch-cloudnative-wfd-dessert    :    `kubectl get service wfddessert-service`
    * refarch-cloudnative-wfd-entree     :    `kubectl get service wfdentree-service`
    * refarch-cloudnative-wfd-menu       :    `kubectl get service wfdmenu-service`
    * refarch-cloudnative-wfd-ui         :    `kubectl get service wfdui`
 
-9. Grab the port and you should be able to access them at `http://<ip>:<port>/<path>/<endpoint>`.
+3. Grab the port and you should be able to access them at `http://<ip>:<port>/<path>/<endpoint>`.
 
 For instance,
 
@@ -274,7 +245,24 @@ For instance,
         <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui_minikube.png">
       </p>
 
-## Stopping the application
+## Delete the application
+
+In order to delete the What's For Dinner application from your Kubernetes cluster on your Minikube environment execute:
+
+* refarch-cloudnative-wfd-appetizer  :    `helm delete wfdappetizer --purge`
+* refarch-cloudnative-wfd-dessert    :    `helm delete wfddessert --purge`
+* refarch-cloudnative-wfd-entree     :    `helm delete wfdentree --purge`
+* refarch-cloudnative-wfd-menu       :    `helm delete wfdmenu --purge`
+* refarch-cloudnative-wfd-ui         :    `helm delete wfdui --purge`
+
+You should see something similar to the following output:
+
+```
+$ helm delete <NAME> --purge
+release "<NAME>" deleted
+```
+
+## Stopping the Minikube
 
 To stop the minikube, run this command.
 
