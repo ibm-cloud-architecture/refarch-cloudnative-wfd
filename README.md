@@ -16,11 +16,6 @@ This repository contains the **Java MicroProfile** implementation of the microse
 
 ## Implementation
 
-- MicroProfile architecture
-- MicroProfile pros/cons
-- MicroProfile code highlights
-- Architecture design/flow
-
 ### [Liberty app accelerator](https://liberty-app-accelerator.wasdev.developer.ibm.com/start/)
 
 Writing an application from scratch is time consuming. It needs extra effort. It is always nice to have a framework that build things automatically. Liberty App Accelerator acts as starting point to begin building the Java applications. It is hosted on IBM Bluemix and one more nice thing about this is that it supports microservices.
