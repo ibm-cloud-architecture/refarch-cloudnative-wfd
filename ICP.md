@@ -11,20 +11,17 @@ Microservice builder has an option to deploy with IBM Cloud Private. You can set
 
 ## Pre-requisites
 
-1. Install [Git](https://git-scm.com/downloads) Client
-2. [IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K). You can find the detailed installation instructions [here](https://github.com/ibm-cloud-architecture/refarch-privatecloud).
+To run the What's For Dinner application on IBM Cloud Private, we first need to get few tools installed:
 
-## Setting up your environment
+- [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/) (Kubernetes CLI) - Follow the instructions [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to install it on your platform.
 
-Microservice Builder runs on a Jenkins pipeline. Basically Jenkins runs in a docker container and it is deployed on Kubernetes using helm.
+- [IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K). You can find the detailed installation instructions [here](https://github.com/ibm-cloud-architecture/refarch-privatecloud).
 
-This jenkins should be integrated with the Github. The repository to which you push the code should be integrated to Microservice Builder pipeline through Github. Then only Microservice Builder will be able to pick your code.
+Along with these, you also need a [JSON processor utility](https://stedolan.github.io/jq/).
 
-To find instructions on how to set your Microservice Builder pipeline up, click [here](https://www.ibm.com/support/knowledgecenter/en/SS5PWC/pipeline.html).
+- In our sample, we used Microservice Builder as our Devops strategy. To ensure continuous delivery and deployment, you need a continuous integration pipeline and Microservice Builder serves this purpose so very well. In order to take advantage of this, you need to setup the Microservice Builder pipeline. To find instructions on how to set your Microservice Builder pipeline up, click [here](https://www.ibm.com/support/knowledgecenter/en/SS5PWC/pipeline.html).
 
-In addition to this, you should have [kubectl CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed in your system.
-
-##### Running the application on IBM Cloud Private
+## Running the application on IBM Cloud Private
 
 Before running the application, make sure you added the docker registry secret.
 
